@@ -1,0 +1,52 @@
+[core]
+    excludesfile = /home/feadlz/.gitignore
+    editor = vim
+	autocrlf = input
+
+[user]
+    email = kf3dorov@gmail.com
+    name = Kirill Fedorov
+
+[rerere]
+    enabled = true
+
+; [pager]
+    ; diff = diff-so-fancy | less --tabs=4 -RFX
+    ; show = diff-so-fancy | less --tabs=4 -RFX
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[color]
+    ui = true
+
+; # Colors from https://github.com/so-fancy/diff-so-fancy#improved-colors-for-the-highlighted-bits
+; [color "diff-highlight"]
+    ; oldNormal = red bold
+    ; oldHighlight = red bold 52
+    ; newNormal = green bold
+    ; newHighlight = green bold 22
+
+# Colors from https://github.com/so-fancy/diff-so-fancy#improved-colors-for-the-highlighted-bits
+; [color "diff"]
+    ; meta = 11
+    ; frag = magenta bold
+    ; commit = yellow bold
+    ; old = red bold
+    ; new = green bold
+    ; whitespace = red reverse
+
+[delta]
+    side-by-side = true
+
+[credential]
+    helper = cache --timeout=18000
+
+[pull]
+	ff = only
+
+[rebase]
+	autosquash = true
