@@ -50,3 +50,10 @@
 
 [rebase]
 	autosquash = true
+
+[alias]
+	last = log -1 HEAD
+    slast = show HEAD
+
+[init]
+	defaultBranch = main

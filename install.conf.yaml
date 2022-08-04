@@ -1,3 +1,5 @@
+---
+
 - defaults:
     link:
       relink: true
@@ -6,3 +8,7 @@
     ~/.gitconfig: git/.gitconfig
     ~/.gitignore: git/.gitignore
     ~/.vimrc: .vimrc
+    ~/.local/bin/git-fuck: bin/git-fuck
+    ~/.terraformrc: terraformrc
+    ~/.zsh-custom: zsh/zsh-custom
+

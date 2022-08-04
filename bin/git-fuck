@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xdg-open https://ohshitgit.com/${1:-ru}

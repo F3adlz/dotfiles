@@ -97,7 +97,9 @@ highlight ALEErrorSign ctermbg=236 ctermfg=131 guifg=#BC3F3C guibg=#313335
 
 " KEYBINDINGS ================================================================
 
-let mapleader=','
+"let mapleader=','
+" let mapleader='\<Space>'
+map <Space> <Leader>
 
 " change key modifier for vim-move (lines movement plugin) to Ctrl+Shift+key
 let g:move_key_modifier = 'C-S'
@@ -110,6 +112,7 @@ vmap <C-S-Down> <Plug>MoveBlockDown
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>, :nohlsearch<CR>
 
 inoremap jj <Esc>
 noremap <C-n> :NERDTreeToggle<CR>
@@ -123,6 +126,9 @@ vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 vnoremap <C-c> "+y
 
 noremap ; :Files<CR>
+
+" paste yanked text multiple times
+noremap <leader>p "0p
 
 " END KEYBINDINGS ============================================================
 
@@ -156,6 +162,23 @@ let g:lightline#ale#indicator_warnings = "\uf071"
 let g:lightline#ale#indicator_errors = "\uf05e "
 
 " END LIGHTLINE ==============================================================
+
+" SEARCH FOR SELECTED TEXT, FORWARDS OR BACKWARDS ============================
+
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
+
+" https://vim.fandom.com/wiki/Search_for_visually_selected_text
+
+" END SEARCH FOR SELECTED TEXT, FORWARDS OR BACKWARDS ========================
 
 " REFERENCES =================================================================
 
