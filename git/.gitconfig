@@ -1,11 +1,7 @@
 [core]
-    excludesfile = /home/feadlz/.gitignore
+    excludesfile = ~/.gitignore
     editor = vim
 	autocrlf = input
-
-[user]
-    email = kf3dorov@gmail.com
-    name = Kirill Fedorov
 
 [rerere]
     enabled = true
