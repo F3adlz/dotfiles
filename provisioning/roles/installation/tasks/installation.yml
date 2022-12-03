@@ -27,6 +27,8 @@
       description: modern find alternative
       source: https://github.com/sharkdp/fd
     - name: fzf
+    - name: git-delta
+      description: Git diff pager with syntax highlighting
     - name: gnome-keyring
       description: allows to save passwords in some applications (Skype, IntelliJ IDEA, etc)
     - name: gvim
