@@ -1,0 +1,57 @@
+---
+- name: Vim | configure Vim
+  become: true
+  block:
+    - name: Vim | remove Vi package
+      pacman:
+        name: vi
+        state: absent
+    - name: Vim | create a symlink from Vi to Vim
+      file:
+        src: /usr/bin/vim
+        dest: /usr/bin/vi
+        state: link
+    - name: Vim | create a symlink for running Vim in RO (view) mode
+      # https://unix.stackexchange.com/questions/33204/how-to-make-a-symbolic-link-to-usr-bin-vim-but-with-start-up-parameters
+      file:
+        src: /usr/bin/vim
+        dest: /usr/bin/view
+        state: link
+
+- name: Bat | configure Bat
+  block:
+    - name: Bat | get Bat config directory
+      command: bat --config-dir
+      register: configuration__bat_config_dir
+      changed_when: false
+    - name: Bat | set Bat themes directory
+      set_fact:
+        configuration__bat_themes_dir: "{{ configuration__bat_config_dir.stdout }}/themes"
+    - name: Bat | Create directory for Bat themes
+      file:
+        path: "{{ configuration__bat_themes_dir }}"
+        state: directory
+    - name: Bat | clone Darcula theme
+      register: configuration__bat_repo_cloned
+      git:
+        repo: https://github.com/gtrght/sublime-text-darcula-theme.git
+        dest: "{{ configuration__bat_themes_dir }}/sublime-text-darcula-theme"
+        version: master
+    - name: Bat | update Bat cache
+      command: bat cache --build
+      when: configuration__bat_repo_cloned.changed
+
+# - name: Qt | local Qt installation
+  # block:
+    # - name: Qt | check if local Qt Creator is installed
+      # stat:
+        # path: "{{ configuration_local_qt_installation_path }}/Tools/QtCreator/bin/qtcreator"
+      # register: configuration__local_qtcreator_binary
+    # - name: Qt | set local Qt Creator desktop file path
+      # set_fact:
+        # configuration__local_qtcreator_desktop_file_path: "{{ ansible_env.HOME }}/.local/share/applications/org.qt-project.qtcreator.desktop"
+    # - name: Qt | rename local Qt Creator desktop file in order to avoid name collision with system version
+      # command: "mv {{ configuration__local_qtcreator_desktop_file_path }} {{ configuration__local_qtcreator_desktop_file_path }}.manual_bak"
+      # when: configuration__local_qtcreator_binary.stat.exists
+
+# vim: set ft=yaml.ansible tabstop=2 softtabstop=2 shiftwidth=2 expandtab:

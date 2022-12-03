@@ -1,0 +1,2 @@
+---
+configuration_local_qt_installation_path: "{{ ansible_env.HOME }}/dev/local/qt"

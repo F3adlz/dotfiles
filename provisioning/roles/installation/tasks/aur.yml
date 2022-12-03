@@ -1,0 +1,49 @@
+---
+- name: AUR | install yay (modern AUR helper)
+  become: yes
+  pacman:
+    name: yay
+    state: present
+
+- name: AUR | check AUR Ansible module is installed
+  command: "pacman -Q {{ installation__aur_module_name }}"
+  register: installation__aur_module_installed
+  changed_when: False
+  failed_when:
+    - installation__aur_module_installed.rc != 0
+    - installation__package_not_found_error not in installation__aur_module_installed.stderr
+
+- name: AUR | install Ansible module for AUR support
+  become: yes
+  when: installation__package_not_found_error in installation__aur_module_installed.stderr
+  block:
+    - name: AUR | create temporary user for using with AUR helper
+      block:
+        - name: AUR | create user {{ installation__aur_user }}
+          user:
+            name: "{{ installation__aur_user }}"
+            group: wheel
+            shell: /usr/bin/nologin
+        - name: AUR | allow run pacman without password for {{ installation__aur_user }}
+          lineinfile:
+            path: "{{ installation__aur_user_sudoers_config_path }}"
+            line: "{{ installation__aur_user }} ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+            create: yes
+            validate: "visudo -cf %s"
+    - name: AUR | install {{ installation__aur_module_name }} AUR package
+      become: yes
+      become_user: "{{ installation__aur_user }}"
+      command: "yay -S --noconfirm {{ installation__aur_module_name }}"
+    - name: AUR | remove temporary user created for using with AUR helper
+      block:
+        - name: AUR | remove user {{ installation__aur_user }}
+          user:
+            name: "{{ installation__aur_user }}"
+            state: absent
+            remove: yes
+        - name: AUR | remove sudo configuration for {{ installation__aur_user }} user
+          file:
+            path: "{{ installation__aur_user_sudoers_config_path }}"
+            state: absent
+
+# vim: set ft=yaml.ansible tabstop=2 softtabstop=2 shiftwidth=2 expandtab:

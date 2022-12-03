@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  gather_facts: true
+  roles:
+    - role: installation
+      tags:
+        - installing
+    - role: configuration
+      tags:
+        - configuration
+  tasks:
+    - name: Enable pkgfile db automatic updates
+      systemd:
+        name: pkgfile-update.timer
+        state: started
+        enabled: true
+    - name: Enable TRIM for SSD disk
+      systemd:
+        name: fstrim.timer
+        state: started
+        enabled: true
+
+# vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:

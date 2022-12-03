@@ -1,0 +1,3 @@
+---
+- import_tasks: aur.yml
+- include_tasks: installation.yml
