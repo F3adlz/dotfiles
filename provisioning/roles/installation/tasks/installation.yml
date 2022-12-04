@@ -110,4 +110,14 @@
     # - name: zsh-autocomplete-git
       # source: https://github.com/marlonrichert/zsh-autocomplete
 
+# https://hishtory.dev
+- block:
+    - name: Packages | Check hiSHtory installed
+      command: which hishtory
+      register: hishtory_installed
+      changed_when: false
+    - name: Packages | Install hiSHtory
+      shell: curl https://hishtory.dev/install.py | python3 -
+      when: hishtory_installed.rc != 0
+
 # vim: set ft=yaml.ansible tabstop=2 softtabstop=2 shiftwidth=2 expandtab:
