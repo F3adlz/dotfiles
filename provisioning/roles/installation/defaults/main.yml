@@ -1,4 +1,5 @@
 ---
+installation_packages: []
 installation__aur_module_name: ansible-aur-git
 installation__aur_user_sudoers_config_path: "/etc/sudoers.d/11-{{ installation__aur_user }}-allow-pacman"
 installation__package_not_found_error: was not found

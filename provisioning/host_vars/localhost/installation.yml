@@ -1,0 +1,73 @@
+installation_packages:
+  - name: ansible-lint
+    description: Ansible linter
+  - name: bat
+    description: modern cat with syntax highlighting
+    source: https://github.com/sharkdp/bat
+  - name: bpython
+    description: interactive Python interpreter
+  - name: breeze-gtk
+    description: Breeze GTK theme
+  - name: cppcheck
+    # - name: ctags
+    # description: tags generation for vim-tagbar
+    # source: https://github.com/universal-ctags/ctags
+  - name: diff-so-fancy
+    source: https://github.com/so-fancy/diff-so-fancy
+  - name: exa
+    description: modern ls replacement
+    source: https://github.com/ogham/exa
+  - name: fd
+    description: modern find alternative
+    source: https://github.com/sharkdp/fd
+  - name: fzf
+  - name: git-delta
+    description: Git diff pager with syntax highlighting
+  - name: gnome-keyring
+    description: allows to save passwords in some applications (Skype, IntelliJ IDEA, etc)
+  - name: gvim
+    description: vim with clipboard support
+  - name: htop
+  - name: httpie
+  - name: hunspell-en_US
+  - name: keepassxc
+    description: password manager
+  - name: lostfiles
+  - name: mc
+    description: twin-panel file manager
+  - name: mlocate
+    description: files search utility
+  - name: ncdu
+    description: disk usage analyzer
+  - name: pacmanlogviewer
+    description: GUI for pacman logs
+    source: https://github.com/gcala/pacmanlogviewer
+  - name: prettyping
+    source: https://github.com/denilsonsa/prettyping
+  - name: procs
+    source: https://github.com/dalance/procs
+  - name: qtcreator
+  - name: qbittorrent
+    description: torrent client
+  - name: ranger
+    description: console file manager with Vim key bindings
+  - name: ripgrep
+  - name: speedtest-cli
+    description: internet connection bandwidth testing tool
+  - name: stow
+  - name: strace
+    description: system calls trace utility
+  - name: tldr
+  - name: tree
+  - name: ttf-nerd-fonts-symbols-2048-em
+    description: iconic font (all symbols from nerd-fonts)
+    source: https://github.com/ryanoasis/nerd-fonts
+  - name: virtualbox
+    description: VirtualBox
+    source: https://github.com/ranger/ranger
+  - name: yamllint
+  - name: zoxide
+    source: https://github.com/ajeetdsouza/zoxide
+    description: cd replacement
+    alternative: autojump
+  - name: zsh
