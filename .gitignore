@@ -1,2 +1,3 @@
 zsh/*zsh-custom/plugins
 zsh/*zsh-custom/themes
+*.zwc

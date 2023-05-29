@@ -1,0 +1,170 @@
+export PATH="${PATH}:${HOME}/.krew/bin"
+
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="fwalch"
+ZSH_THEME="Chill/chill"
+
+
+# Shell history file path
+export HISTFILE=$HOME/.cache/.zsh_history
+# Number of commands to save in history
+export SAVEHIST=100000
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Command execution timestamp shown in the history command output
+HIST_STAMPS="%T %d.%m.%y"
+
+# Directory for custom scripts/plugins/themes
+ZSH_CUSTOM=$HOME/.zsh-custom
+
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(
+  # git
+  # gradle
+  # httpie
+  # pip
+  # yarn
+  # npm
+
+  # docker
+  # docker-compose
+  # ansible
+  # kubectl
+  # helm # completions
+  # terraform
+
+  # colored-man-pages
+  # command-not-found
+  # # autojump
+  # zoxide
+  # history
+  # archlinux
+  # systemd
+
+  # fzf
+  # zsh-completions
+  # zsh-autosuggestions
+  # zsh-syntax-highlighting
+  # history-substring-search
+# )
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# function fzf_open_in_vim() {
+    # vim $(fzf)
+# }
+
+# zle -N fzf_open_in_vim
+# bindkey '^[o' fzf_open_in_vim
+# bindkey '^[o' 'vim $(fzf)'
+
+
+# Search a file with fzf and then open it in an editor
+function fzf_open_in_editor() {
+  echo $FZF_DEFAULT_COMMAND
+  local file="$(fzf)"
+  # Open the file if it exists
+  if [ -n "$file" ]; then
+    # Use the default editor if it's defined, otherwise Vim
+    ${EDITOR:-vim} "$file"
+  fi
+}
+
+# zle -N fzf_open_in_editor
+# bindkey '^[o' fzf_open_in_editor
+alias o="fzf_open_in_editor"
+
+#============= fubectl =============#
+# https://github.com/kubermatic/fubectl
+
+unalias ked
+unalias kdel
+
+[ -f $ZSH_CUSTOM/plugins/fubectl/fubectl.source ] && source $ZSH_CUSTOM/plugins/fubectl/fubectl.source
+
+#============= FUNCTIONS =============#
+
+# resize image
+# $1 - input file name
+# $2 - size (f.e. WxH)
+# $3 - output file name
+# https://www.howtogeek.com/109369/how-to-quickly-resize-convert-modify-images-from-the-linux-terminal/
+function resize_image() {
+  convert $1 -resize $2 $3
+}
+
+# run shell in Docker container
+function desh() {
+  docker exec -it $1 ${2:-sh}
+}
+
+function docker_host_ip() {
+    ip route | grep docker0 | cut -d ' ' -f 1
+}
+
+function kesh() {
+  kubectl exec -it $1 ${2:-sh}
+}
+
+eval "$(zoxide init --cmd j zsh)" # Zoxide configuration
+
+# Enable zsh-autocomplete plugin
+# source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/home/feadlz/yandex-cloud/path.bash.inc' ]; then source '/home/feadlz/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/home/feadlz/yandex-cloud/completion.zsh.inc' ]; then source '/home/feadlz/yandex-cloud/completion.zsh.inc'; fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/mcli mcli
+
+# Hishtory Config:
+export PATH="$PATH:/home/feadlz/.hishtory"
+source /home/feadlz/.hishtory/config.zsh

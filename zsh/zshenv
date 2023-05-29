@@ -1,0 +1,23 @@
+# load local (machine specific) environment variables
+if [ -f ~/.zshenv.local ]; then
+    source ~/.zshenv.local
+fi
+
+export VIEWER="view"
+export EDITOR="vim"
+export SYSTEMD_EDITOR=$EDITOR
+
+export BAT_THEME="Intellij Darcula"
+
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
+export FZF_BASE=/usr/share/fzf
+
+export FZF_DEFAULT_COMMAND="fd --type f --color=never"
+export FZF_ALT_C_COMMAND="fd --type d . --color=never"
+
+# add support for Ctrl+O to open selected file in Vim
+#export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {} < /dev/tty > /dev/tty)'"
+
+# Go
+export GOPATH="$HOME/dev/go/"
