@@ -23,6 +23,7 @@
     ~/.gitignore: git/.gitignore
     ~/.vimrc: dotfiles/vim/.vimrc
     ~/.local/bin/git-fuck: bin/git-fuck
+    ~/.ideavimrc: dotfiles/vim/.ideavimrc
     ~/.terraformrc: terraformrc
     ~/.config/zsh/.zsh-custom/: dotfiles/zsh/zsh-custom/
     ~/.zshrc: zsh/zshrc
