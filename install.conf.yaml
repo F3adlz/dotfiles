@@ -4,6 +4,20 @@
     link:
       relink: true
 
+- create:
+    ~/.config:
+      mode: 0700
+    ~/.config/spaceship:
+      mode: 0700
+    ~/.config/zsh:
+      mode: 0700
+    ~/.local/bin:
+      mode: 0700
+    ~/dev:
+      mode: 0700
+    ~/tmp:
+      mode: 0700
+
 - link:
     ~/.gitconfig: git/.gitconfig
     ~/.gitignore: git/.gitignore
