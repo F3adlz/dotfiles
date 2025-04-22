@@ -3,9 +3,6 @@ alias -g RG=' | rg'
 
 # VARIOUS ======================================================================
 
-# clean yay cache (only AUR packages)
-# https://www.reddit.com/r/ManjaroLinux/comments/cst4ou/yay_cache_cleaning/
-alias yacl="yay -Sc --aur"
 
 alias edit="vim"
 alias v="vim"
@@ -36,19 +33,39 @@ alias df="df -h"
 
 alias jq="jq -C"
 
-alias open="xdg-open"
+if [[ $(uname) == "Darwin" ]]; then
+else
+    alias open="xdg-open"
+
+    # Pacman/Yay ===================================================================
+    alias pacrer="sudo pacman -Rs"
+    # clean yay cache (only AUR packages)
+    # https://www.reddit.com/r/ManjaroLinux/comments/cst4ou/yay_cache_cleaning/
+    alias yacl="yay -Sc --aur"
+
+    # https://wiki.archlinux.org/index.php/Fzf#Pacman
+    alias pacs="pacman -Sl | awk '{ if(\$4 != \"[installed]\") { print \$2 }}' | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+    alias yas="yay -Sl | awk '{ if(\$4 != \"[installed]\") { print \$2 }}' | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
+
+    # Network ======================================================================
+    alias bton='rfkill unblock bluetooth'
+    alias btoff='rfkill block bluetooth'
+
+    # Services =====================================================================
+    alias restart_audio="systemctl --user restart pulseaudio"
+fi
 
 # ZSH ==========================================================================
 
 alias zshconfig="$EDITOR ~/.zshrc"
 alias aliases="$EDITOR ~/.zsh-custom/aliases.zsh"
 
-# https://coderwall.com/p/jsm4qa/how-to-reload-zsh-aliases
-alias reload=". ~/.zshrc && echo 'Zsh config reloaded from ~/.zshrc'" 
+# https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#how-do-i-reload-the-zshrc-file
+alias reload="omz reload && echo 'Zsh config reloaded from ~/.zshrc'" 
 
 # EXA ==========================================================================
 
-alias exa="exa --icons"
+alias exa="eza --icons"
 
 # display files (including hidden) as list
 alias e="exa -la"
@@ -68,13 +85,6 @@ alias ls=exa
 alias la=e
 alias lt="el -T"
 
-# Pacman/Yay ===================================================================
-alias pacrer="sudo pacman -Rs"
-
-# https://wiki.archlinux.org/index.php/Fzf#Pacman
-alias pacs="pacman -Sl | awk '{ if(\$4 != \"[installed]\") { print \$2 }}' | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
-alias yas="yay -Sl | awk '{ if(\$4 != \"[installed]\") { print \$2 }}' | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
-
 # Ripgrep ======================================================================
 alias rgi="rg -i"  # case insensitive search
 alias rgl="rg -l"  # list only the files that match, not content
@@ -93,16 +103,9 @@ alias preview="fzf --preview 'bat --color \"always\" {}'"
 # Job ==========================================================================
 alias mvs_vpn="nmcli c up MVS"
 
-# Services =====================================================================
-alias restart_audio="systemctl --user restart pulseaudio"
-
 # History ======================================================================
 alias ht='h | tail -n '
 alias ht10='h | tail'
-
-# Network ======================================================================
-alias bton='rfkill unblock bluetooth'
-alias btoff='rfkill block bluetooth'
 
 # Kubernetes ===================================================================
 alias kg="kubectl get"
