@@ -1,0 +1,77 @@
+---
+
+- name: Tap repositories
+  community.general.homebrew_tap:
+    name:
+      # https://github.com/Homebrew/homebrew-cask-fonts
+      - homebrew/cask-fonts
+      - homebrew/cask-versions
+      - hashicorp/tap
+      # https://github.com/buo/homebrew-cask-upgrade
+      - buo/cask-upgrade
+      - hakky54/crip
+      - jetpackduba/apps
+      - micronaut-projects/tap
+      - yuccastream/tap
+- name: Install casks
+  community.general.homebrew_cask:
+    name:
+      - alfred
+      - alt-tab
+      - betterdisplay
+      - chromium
+      - datagrip
+      - docker
+      - flameshot
+      - font-hack
+      - font-hack-nerd-font
+      - gimp
+      - git-credential-manager
+      - httpie
+      - intellij-idea
+      - iterm2
+      - keepassxc
+      - keka
+      - mattermost
+      - megasync
+      - obsidian
+      - openvpn-connect
+      # rectangle
+      - steam
+      - surfshark
+      - temurin17
+      - thunderbird
+      - vscodium
+      - yandex-cloud-cli
+      - zed
+      - zoom
+    state: present
+# ansible.builtin.osx_defaults doesn't support dict values
+- name: MacOS | Check iTerm2 themes installed
+  ansible.builtin.command: /usr/libexec/PlistBuddy -c 'print :"Custom Color Presets"' \
+    ~/Library/Preferences/com.googlecode.iterm2.plist
+  changed_when: false
+  ignore_errors: true
+  register: macos_iterm2_themes_installed
+- name: MacOS | Install iTerm2 themes
+  when: "'Does Not Exist' in macos_iterm2_themes_installed.stderr"
+  block:
+    - name: MacOS | iTerm2 | Clone color schemes repo
+      ansible.builtin.git:
+        repo: https://github.com/mbadolato/iTerm2-Color-Schemes.git
+        dest: "{{ macos_iterm2_color_schemes_dir }}"
+        clone: true
+        depth: 1
+        single_branch: true
+        version: master
+    - name: MacOS | iTerm2 | Import color scheme
+      ansible.builtin.command: "{{ macos_iterm2_color_schemes_dir }}/tools\
+        /import-scheme.sh {{ item }}"
+      changed_when: true
+      with_fileglob:
+        - "{{ macos_iterm2_color_schemes_dir }}/schemes/*"
+  always:
+    - name: MacOS | iTerm2 | Remove cloned repo
+      ansible.builtin.file:
+        path: /tmp/mbadolato
+        state: absent

@@ -1,44 +1,45 @@
 ---
+
 - name: Vim | configure Vim
   become: true
   block:
-    - name: Vim | remove Vi package
-      pacman:
+    - name: Vim | Remove Vi package
+      ansible.builtin.pacman:
         name: vi
         state: absent
-    - name: Vim | create a symlink from Vi to Vim
-      file:
+    - name: Vim | Create a symlink from Vi to Vim
+      ansible.builtin.file:
         src: /usr/bin/vim
         dest: /usr/bin/vi
         state: link
-    - name: Vim | create a symlink for running Vim in RO (view) mode
+    - name: Vim | Create a symlink for running Vim in RO (view) mode
       # https://unix.stackexchange.com/questions/33204/how-to-make-a-symbolic-link-to-usr-bin-vim-but-with-start-up-parameters
-      file:
+      ansible.builtin.file:
         src: /usr/bin/vim
         dest: /usr/bin/view
         state: link
 
-- name: Bat | configure Bat
+- name: Bat | Configure Bat
   block:
-    - name: Bat | get Bat config directory
-      command: bat --config-dir
+    - name: Bat | Get Bat config directory
+      ansible.builtin.command: bat --config-dir
       register: configuration__bat_config_dir
       changed_when: false
-    - name: Bat | set Bat themes directory
-      set_fact:
+    - name: Bat | Set Bat themes directory
+      ansible.builtin.set_fact:
         configuration__bat_themes_dir: "{{ configuration__bat_config_dir.stdout }}/themes"
     - name: Bat | Create directory for Bat themes
-      file:
+      ansible.builtin.file:
         path: "{{ configuration__bat_themes_dir }}"
         state: directory
-    - name: Bat | clone Darcula theme
+    - name: Bat | Clone Darcula theme
       register: configuration__bat_repo_cloned
-      git:
+      ansible.builtin.git:
         repo: https://github.com/gtrght/sublime-text-darcula-theme.git
         dest: "{{ configuration__bat_themes_dir }}/sublime-text-darcula-theme"
         version: master
-    - name: Bat | update Bat cache
-      command: bat cache --build
+    - name: Bat | Update Bat cache
+      ansible.builtin.command: bat cache --build
       when: configuration__bat_repo_cloned.changed
 
 # - name: Qt | local Qt installation
