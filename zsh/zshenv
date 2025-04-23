@@ -5,19 +5,19 @@ fi
 
 export VIEWER="view"
 export EDITOR="vim"
-export SYSTEMD_EDITOR=$EDITOR
 
-export BAT_THEME="Intellij Darcula"
 
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
-export FZF_BASE=/usr/share/fzf
+export BAT_THEME="Visual Studio Dark+"
 
-export FZF_DEFAULT_COMMAND="fd --type f --color=never"
-export FZF_ALT_C_COMMAND="fd --type d . --color=never"
+export FZF_DEFAULT_COMMAND="fd --type f --color=never --hidden --exclude .git"
+export FZF_ALT_C_COMMAND="fd --type d . --color=never --hidden --exclude .git"
 
 # add support for Ctrl+O to open selected file in Vim
-#export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {} < /dev/tty > /dev/tty)'"
 
-# Go
-export GOPATH="$HOME/dev/go/"
+if [[ $(uname) == "Darwin" ]]; then
+    # https://support.azul.com/hc/en-us/articles/17535521715476-Setting-the-default-Java-version-on-macOS
+    export JAVA_VERSION=17
+else
+    export SYSTEMD_EDITOR=$EDITOR
+fi
