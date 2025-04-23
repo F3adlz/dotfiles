@@ -1,0 +1,10 @@
+if [[ $(uname) == "Darwin" ]]; then
+    # Set Homebrew env variables
+    # https://mac.install.guide/homebrew/3
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    # Add Homebrew installed Python to PATH
+    # https://mac.install.guide/python/path
+    export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+else
+fi

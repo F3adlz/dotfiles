@@ -28,4 +28,4 @@
     ~/.config/zsh/.zsh-custom/: dotfiles/zsh/zsh-custom/
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
-
+    ~/.zprofile: dotfiles/zsh/zprofile
