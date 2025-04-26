@@ -1,5 +1,11 @@
 export PATH="${PATH}:${HOME}/.krew/bin"
 
+if is_macos; then
+    source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
+    OS=macos
+else
+    OS=archlinux
+fi
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="fwalch"
 ZSH_THEME="Chill/chill"
@@ -24,48 +30,25 @@ export SAVEHIST=100000
 # Command execution timestamp shown in the history command output
 HIST_STAMPS="%T %d.%m.%y"
 
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+antidote load ${ZDOTDIR:-$HOME}/ohmyzsh.zsh_plugins.txt
 # Directory for custom scripts/plugins/themes
 ZSH_CUSTOM=$HOME/.zsh-custom
 
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(
-  # git
-  # gradle
-  # httpie
-  # pip
-  # yarn
-  # npm
 
-  # docker
-  # docker-compose
-  # ansible
-  # kubectl
-  # helm # completions
-  # terraform
 
-  # colored-man-pages
-  # command-not-found
-  # # autojump
-  # zoxide
-  # history
-  # archlinux
-  # systemd
 
-  # fzf
-  # zsh-completions
-  # zsh-autosuggestions
-  # zsh-syntax-highlighting
-  # history-substring-search
-# )
-
+ZSH=$(antidote path ohmyzsh/ohmyzsh)
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+PROMPT_THEME=pure
+# PROMPT_THEME=spaceship
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# load common plugins
+antidote load ${ZDOTDIR:-$HOME}/common.zsh_plugins.txt
+# load OS specific plugins
+antidote load ${ZDOTDIR:-$HOME}/$OS.zsh_plugins.txt
+autoload -Uz promptinit && promptinit && prompt $PROMPT_THEME
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

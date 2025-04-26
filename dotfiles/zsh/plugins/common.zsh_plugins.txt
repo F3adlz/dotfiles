@@ -1,0 +1,9 @@
+atuinsh/atuin branch:main
+kubermatic/fubectl
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zsh-users/zsh-syntax-highlighting # should be before history substring search plugin
+zsh-users/zsh-history-substring-search
+
+spaceship-prompt/spaceship-prompt kind:fpath
+sindresorhus/pure kind:fpath
