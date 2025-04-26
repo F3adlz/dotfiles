@@ -156,15 +156,18 @@ eval "$(zoxide init --cmd j zsh)" # Zoxide configuration
 # Enable zsh-autocomplete plugin
 # source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-# The next line updates PATH for Yandex Cloud CLI.
-if [ -f '/home/feadlz/yandex-cloud/path.bash.inc' ]; then source '/home/feadlz/yandex-cloud/path.bash.inc'; fi
-
-# The next line enables shell command completion for yc.
-if [ -f '/home/feadlz/yandex-cloud/completion.zsh.inc' ]; then source '/home/feadlz/yandex-cloud/completion.zsh.inc'; fi
-
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/mcli mcli
 
 # Hishtory Config:
 export PATH="$PATH:/home/feadlz/.hishtory"
 source /home/feadlz/.hishtory/config.zsh
+
+# Enable yc shell command completion
+if is_macos; then
+    local yc_version="$(yc --version | awk '{print $4}')"
+    source "$HOMEBREW_PREFIX/Caskroom/yandex-cloud-cli/$yc_version/yandex-cloud-cli/completion.zsh.inc"
+else
+    if [ -f "$HOME/yandex-cloud/completion.zsh.inc" ]; then
+    source "$HOME/yandex-cloud/completion.zsh.inc"; fi
+fi
