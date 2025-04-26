@@ -25,6 +25,7 @@
       - flameshot
       - font-hack
       - font-hack-nerd-font
+      - fzf
       - gimp
       - git-credential-manager
       - httpie
