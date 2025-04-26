@@ -1,3 +1,7 @@
+ZDOTDIR=$HOME/.config/zsh
+
+function is_macos() { [[ "$OSTYPE" == darwin* ]] }
+
 # load local (machine specific) environment variables
 if [ -f ~/.zshenv.local ]; then
     source ~/.zshenv.local
@@ -15,7 +19,7 @@ export FZF_ALT_C_COMMAND="fd --type d . --color=never --hidden --exclude .git"
 # add support for Ctrl+O to open selected file in Vim
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {} < /dev/tty > /dev/tty)'"
 
-if [[ $(uname) == "Darwin" ]]; then
+if is_macos; then
     # https://support.azul.com/hc/en-us/articles/17535521715476-Setting-the-default-Java-version-on-macOS
     export JAVA_VERSION=17
 else
