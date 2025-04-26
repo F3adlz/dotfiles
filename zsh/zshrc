@@ -118,10 +118,6 @@ eval "$(zoxide init --cmd j zsh)" # Zoxide configuration
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/mcli mcli
 
-# Hishtory Config:
-export PATH="$PATH:/home/feadlz/.hishtory"
-source /home/feadlz/.hishtory/config.zsh
-
 # Enable yc shell command completion
 if is_macos; then
     local yc_version="$(yc --version | awk '{print $4}')"
