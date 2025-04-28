@@ -1,9 +1,12 @@
 export PATH="${PATH}:${HOME}/.krew/bin"
 
 if is_macos; then
+    # Shell history file path
+    export HISTFILE=$HOME/.zsh_history
     source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
     OS=macos
 else
+    export HISTFILE=$HOME/.cache/.zsh_history
     # TODO load antidote
     OS=archlinux
 fi
@@ -11,9 +14,6 @@ fi
 # ZSH_THEME="fwalch"
 ZSH_THEME="Chill/chill"
 
-
-# Shell history file path
-export HISTFILE=$HOME/.cache/.zsh_history
 # Number of commands to save in history
 export SAVEHIST=100000
 
