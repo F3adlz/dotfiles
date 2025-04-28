@@ -1,1 +1,31 @@
-macos_iterm2_color_schemes_dir: /tmp/mbadolato/iTerm2-Color-Schemes
+macbook_macos_iterm2_color_schemes_dir: /tmp/mbadolato/iTerm2-Color-Schemes
+macbook_homebrew_packages:
+  - name: ansible-lint
+  - name: antidote
+  - name: atuin
+    description: Shell history manager (sync/backup/search)
+    url: https://atuin.sh/
+  - name: bat
+  - name: git-delta
+  - name: eza
+  - name: fd
+  - name: fzf
+  - name: glab
+  - name: git-crypt
+  - name: gpg
+  - name: hashicorp/tap/terraform
+  - name: helm
+  - name: htop
+  - name: httpie
+  - name: jq
+  - name: kubectl
+  - name: kubectx
+  - name: mc
+  - name: node
+  - name: openconnect
+  - name: python
+  - name: pwgen
+  - name: rg
+  - name: telnet
+  - name: tldr
+  - name: zoxide

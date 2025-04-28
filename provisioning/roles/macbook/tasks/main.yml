@@ -15,34 +15,8 @@
       - yuccastream/tap
 - name: Homebrew | Install packages
   community.general.homebrew:
-    name:
-      - ansible-lint
-      - antidote
-      - atuin
-      - bat
-      - git-delta
-      - eza
-      - fd
-      - fzf
-      - glab
-      - git-crypt
-      - gpg
-      - hashicorp/tap/terraform
-      - helm
-      - htop
-      - httpie
-      - jq
-      - kubectl
-      - kubectx
-      - mc
-      - node
-      - openconnect
-      - python
-      - pwgen
-      - rg
-      - telnet
-      - tldr
-      - zoxide
+    name: "{{ item.name }}"
+  loop: "{{ macbook_homebrew_packages }}"
 - name: Install casks
   community.general.homebrew_cask:
     name:
@@ -89,17 +63,17 @@
     - name: MacOS | iTerm2 | Clone color schemes repo
       ansible.builtin.git:
         repo: https://github.com/mbadolato/iTerm2-Color-Schemes.git
-        dest: "{{ macos_iterm2_color_schemes_dir }}"
+        dest: "{{ macbook_macos_iterm2_color_schemes_dir }}"
         clone: true
         depth: 1
         single_branch: true
         version: master
     - name: MacOS | iTerm2 | Import color scheme
-      ansible.builtin.command: "{{ macos_iterm2_color_schemes_dir }}/tools\
+      ansible.builtin.command: "{{ macbook_macos_iterm2_color_schemes_dir }}/tools\
         /import-scheme.sh {{ item }}"
       changed_when: true
       with_fileglob:
-        - "{{ macos_iterm2_color_schemes_dir }}/schemes/*"
+        - "{{ macbook_macos_iterm2_color_schemes_dir }}/schemes/*"
   always:
     - name: MacOS | iTerm2 | Remove cloned repo
       ansible.builtin.file:
