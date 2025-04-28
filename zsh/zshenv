@@ -1,6 +1,7 @@
 ZDOTDIR=$HOME/.config/zsh
 
 function is_macos() { [[ "$OSTYPE" == darwin* ]] }
+function is_linux() { [[ "$OSTYPE" == linux* ]] }
 
 # load local (machine specific) environment variables
 if [ -f ~/.zshenv.local ]; then

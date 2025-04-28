@@ -20,3 +20,7 @@ ohmyzsh/ohmyzsh path:plugins/web-search
 ohmyzsh/ohmyzsh path:plugins/yarn
 ohmyzsh/ohmyzsh path:plugins/zoxide
 
+ohmyzsh/ohmyzsh path:plugins/brew              conditional:is_macos
+ohmyzsh/ohmyzsh path:plugins/archlinux         conditional:is_linux
+ohmyzsh/ohmyzsh path:plugins/command-not-found conditional:is_linux
+ohmyzsh/ohmyzsh path:plugins/systemd           conditional:is_linux

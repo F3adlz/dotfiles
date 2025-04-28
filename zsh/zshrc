@@ -31,6 +31,7 @@ export SAVEHIST=100000
 HIST_STAMPS="%T %d.%m.%y"
 
 zstyle ':antidote:bundle' use-friendly-names 'yes'
+# Load OMZ plugins
 antidote load ${ZDOTDIR:-$HOME}/ohmyzsh.zsh_plugins.txt
 # Directory for custom scripts/plugins/themes
 ZSH_CUSTOM=$HOME/.zsh-custom
@@ -44,39 +45,20 @@ source $ZSH/oh-my-zsh.sh
 PROMPT_THEME=pure
 # PROMPT_THEME=spaceship
 
-# load common plugins
-antidote load ${ZDOTDIR:-$HOME}/common.zsh_plugins.txt
-# load OS specific plugins
-antidote load ${ZDOTDIR:-$HOME}/$OS.zsh_plugins.txt
+# Load common plugins
+antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 autoload -Uz promptinit && promptinit && prompt $PROMPT_THEME
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# Begin Atuin
+# The same does Atuin zsh plugin
+# https://github.com/atuinsh/atuin/blob/main/atuin.plugin.zsh
+# There is no point to clone whole repository just for 5 lines
+FOUND_ATUIN=$+commands[atuin]
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+if [[ $FOUND_ATUIN -eq 1 ]]; then
+  source <(atuin init zsh --disable-up-arrow)
+fi
+# End Atuin
 
 # function fzf_open_in_vim() {
     # vim $(fzf)
@@ -85,7 +67,6 @@ bindkey '^[[B' history-substring-search-down
 # zle -N fzf_open_in_vim
 # bindkey '^[o' fzf_open_in_vim
 # bindkey '^[o' 'vim $(fzf)'
-
 
 # Search a file with fzf and then open it in an editor
 function fzf_open_in_editor() {
@@ -107,9 +88,6 @@ alias o="fzf_open_in_editor"
 
 unalias ked
 unalias kdel
-
-[ -f $ZSH_CUSTOM/plugins/fubectl/fubectl.source ] && source $ZSH_CUSTOM/plugins/fubectl/fubectl.source
-
 eval "$(zoxide init --cmd j zsh)" # Zoxide configuration
 
 # Enable zsh-autocomplete plugin
@@ -118,7 +96,8 @@ eval "$(zoxide init --cmd j zsh)" # Zoxide configuration
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/mcli mcli
 
-# Enable yc shell command completion
+# Begin yc
+# Enable shell command completion
 if is_macos; then
     local yc_version="$(yc --version | awk '{print $4}')"
     source "$HOMEBREW_PREFIX/Caskroom/yandex-cloud-cli/$yc_version/yandex-cloud-cli/completion.zsh.inc"
@@ -126,3 +105,4 @@ else
     if [ -f "$HOME/yandex-cloud/completion.zsh.inc" ]; then
     source "$HOME/yandex-cloud/completion.zsh.inc"; fi
 fi
+# End yc

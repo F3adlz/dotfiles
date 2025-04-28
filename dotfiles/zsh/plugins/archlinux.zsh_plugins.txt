@@ -1,3 +1,0 @@
-ohmyzsh/ohmyzsh path:plugins/archlinux
-ohmyzsh/ohmyzsh path:plugins/command-not-found
-ohmyzsh/ohmyzsh path:plugins/systemd

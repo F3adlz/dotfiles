@@ -28,4 +28,7 @@
     ~/.config/zsh/.zsh-custom/: dotfiles/zsh/zsh-custom/
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
+    ~/.config/spaceship/spaceship.zsh: dotfiles/zsh/spaceship.zsh
     ~/.zprofile: dotfiles/zsh/zprofile
+    ~/.config/zsh/.zsh_plugins.txt: dotfiles/zsh/plugins/.zsh_plugins.txt
+    ~/.config/zsh/ohmyzsh.zsh_plugins.txt: dotfiles/zsh/plugins/ohmyzsh.zsh_plugins.txt
