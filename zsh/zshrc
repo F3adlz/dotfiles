@@ -4,6 +4,7 @@ if is_macos; then
     source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
     OS=macos
 else
+    # TODO load antidote
     OS=archlinux
 fi
 # ZSH_THEME="robbyrussell"
