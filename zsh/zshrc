@@ -10,9 +10,6 @@ else
     # TODO load antidote
     OS=archlinux
 fi
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="fwalch"
-ZSH_THEME="Chill/chill"
 
 # Number of commands to save in history
 export SAVEHIST=100000
@@ -44,7 +41,6 @@ ZSH=$(antidote path ohmyzsh/ohmyzsh)
 source $ZSH/oh-my-zsh.sh
 
 PROMPT_THEME=pure
-# PROMPT_THEME=spaceship
 
 # Load common plugins
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
