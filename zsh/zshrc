@@ -31,12 +31,8 @@ HIST_STAMPS="%T %d.%m.%y"
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 # Load OMZ plugins
 antidote load ${ZDOTDIR:-$HOME}/ohmyzsh.zsh_plugins.txt
-# Directory for custom scripts/plugins/themes
-ZSH_CUSTOM=$HOME/.zsh-custom
 
-
-
-
+ZSH_CUSTOM=${ZDOTDIR:-$HOME}/.zsh-custom
 ZSH=$(antidote path ohmyzsh/ohmyzsh)
 source $ZSH/oh-my-zsh.sh
 
