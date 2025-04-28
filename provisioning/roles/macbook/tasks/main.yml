@@ -13,6 +13,36 @@
       - jetpackduba/apps
       - micronaut-projects/tap
       - yuccastream/tap
+- name: Homebrew | Install packages
+  community.general.homebrew:
+    name:
+      - ansible-lint
+      - antidote
+      - atuin
+      - bat
+      - git-delta
+      - eza
+      - fd
+      - fzf
+      - glab
+      - git-crypt
+      - gpg
+      - hashicorp/tap/terraform
+      - helm
+      - htop
+      - httpie
+      - jq
+      - kubectl
+      - kubectx
+      - mc
+      - node
+      - openconnect
+      - python
+      - pwgen
+      - rg
+      - telnet
+      - tldr
+      - zoxide
 - name: Install casks
   community.general.homebrew_cask:
     name:
