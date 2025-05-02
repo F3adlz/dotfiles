@@ -71,3 +71,4 @@ installation_packages:
     description: cd replacement
     alternative: autojump
   - name: zsh
+  #TODO - name: viddy

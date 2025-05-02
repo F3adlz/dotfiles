@@ -28,4 +28,7 @@ macbook_homebrew_packages:
   - name: rg
   - name: telnet
   - name: tldr
+  - name: viddy
+    description: Modern watch alternative
+    url: https://github.com/sachaos/viddy
   - name: zoxide

@@ -3,6 +3,12 @@ alias -g RG=' | rg'
 
 # VARIOUS ======================================================================
 
+## Begin alternatives
+alias cat="bat"
+alias ping="prettyping --nolegend"
+alias top="htop"
+alias watch="viddy"
+## End alternatives
 
 alias edit="vim"
 alias v="vim"
@@ -18,11 +24,8 @@ alias rm="rm -vi"   # rm verbose, prompt before every removal
 alias rr="rm -rfvI" # rm verbose, recursive, prompt once
 alias rrs="rm -rvi" # rm verbose, recursive, prompt before every removal
 
-alias cat="bat"
 alias catp="bat -p" # plain, no decorations
-alias top="htop"
 
-alias ping="prettyping --nolegend"
 
 alias mount="mount | column -t"
 
@@ -33,7 +36,7 @@ alias df="df -h"
 
 alias jq="jq -C"
 
-if [[ $(uname) == "Darwin" ]]; then
+if is_macos; then
 else
     alias open="xdg-open"
 
