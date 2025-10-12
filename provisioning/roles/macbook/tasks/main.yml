@@ -19,37 +19,9 @@
   loop: "{{ macbook_homebrew_packages }}"
 - name: Install casks
   community.general.homebrew_cask:
-    name:
-      - alfred
-      - alt-tab
-      - betterdisplay
-      - chromium
-      - datagrip
-      - docker
-      - flameshot
-      - font-hack
-      - font-hack-nerd-font
-      - gimp
-      - git-credential-manager
-      - httpie
-      - intellij-idea
-      - iterm2
-      - keepassxc
-      - keka
-      - mattermost
-      - megasync
-      - obsidian
-      - openvpn-connect
-      # rectangle
-      - steam
-      - surfshark
-      - temurin17
-      - thunderbird
-      - vscodium
-      - yandex-cloud-cli
-      - zed
-      - zoom
+    name: "{{ item.name }}"
     state: present
+  loop: "{{ macbook_homebrew_casks }}"
 # ansible.builtin.osx_defaults doesn't support dict values
 - name: MacOS | Check iTerm2 themes installed
   ansible.builtin.command: /usr/libexec/PlistBuddy -c 'print :"Custom Color Presets"' \

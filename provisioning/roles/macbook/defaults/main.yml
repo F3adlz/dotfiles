@@ -1,4 +1,37 @@
 macbook_macos_iterm2_color_schemes_dir: /tmp/mbadolato/iTerm2-Color-Schemes
+
+macbook_homebrew_casks:
+  - alfred
+  - alt-tab
+  - betterdisplay
+  - chromium
+  - datagrip
+  - docker
+  - firefox
+  - flameshot
+  - font-hack
+  - font-hack-nerd-font
+  - gimp
+  - git-credential-manager
+  - httpie
+  - intellij-idea
+  - iterm2
+  - keepassxc
+  - keka
+  - mattermost
+  - megasync
+  - obsidian
+  - openvpn-connect
+  - rectangle
+  - steam
+  - temurin@17
+  - thunderbird
+  - vlc
+  - vscodium
+  - yandex-cloud-cli
+  - zed
+  - zoom
+
 macbook_homebrew_packages:
   - name: ansible-lint
   - name: antidote
@@ -6,7 +39,11 @@ macbook_homebrew_packages:
     description: Shell history manager (sync/backup/search)
     url: https://atuin.sh/
   - name: bat
+    url: https://github.com/sharkdp/bat
+    description: Modern cat replacement
   - name: git-delta
+    description: Git diff pager with syntax highlighting
+    url: https://github.com/dandavison/delta
   - name: eza
   - name: fd
   - name: fzf
