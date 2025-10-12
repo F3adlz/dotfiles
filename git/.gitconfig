@@ -36,6 +36,7 @@
     ; whitespace = red reverse
 
 [delta]
+    syntax-theme = ansi
     side-by-side = true
 
 [credential]

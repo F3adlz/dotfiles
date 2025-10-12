@@ -26,6 +26,7 @@
     ~/.ideavimrc: dotfiles/vim/.ideavimrc
     ~/.terraformrc: terraformrc
     ~/.config/zsh/.zsh-custom/: dotfiles/zsh/zsh-custom/
+    ~/.config/bat/config: configs/bat/config
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
     ~/.config/spaceship/spaceship.zsh: dotfiles/zsh/spaceship.zsh
