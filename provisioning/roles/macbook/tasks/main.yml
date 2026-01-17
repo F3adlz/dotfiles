@@ -28,9 +28,9 @@
     ~/Library/Preferences/com.googlecode.iterm2.plist
   changed_when: false
   ignore_errors: true
-  register: macos_iterm2_themes_installed
+  register: macbook_iterm2_themes_installed
 - name: MacOS | Install iTerm2 themes
-  when: "'Does Not Exist' in macos_iterm2_themes_installed.stderr"
+  when: "'Does Not Exist' in macbook_iterm2_themes_installed.stderr"
   block:
     - name: MacOS | iTerm2 | Clone color schemes repo
       ansible.builtin.git:
