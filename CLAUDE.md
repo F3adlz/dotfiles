@@ -34,7 +34,8 @@ ansible-playbook ~/.dotfiles/provisioning/main.yml --tags=configuration
 
 ### Ansible Layer
 - Main playbook: `provisioning/main.yml`
-- OS detection via `ansible_facts['os_family']`
+- OS detection via `ansible_facts['os_family']` and `ansible_facts['system']`
+- **Unix common**: `unix_common` role (applies to Linux and macOS - manages /etc/hosts)
 - **macOS**: Uses `macbook` role (Homebrew packages/casks, iTerm2 config)
 - **Arch Linux**: Uses `installation` + `configuration` roles (pacman, AUR, systemd)
 
@@ -52,6 +53,7 @@ ansible-playbook ~/.dotfiles/provisioning/main.yml --tags=configuration
 ### Package Management
 - **macOS packages**: `provisioning/roles/macbook/defaults/main.yml` (Homebrew casks/packages)
 - **Arch packages**: `provisioning/host_vars/localhost/installation.yml` (pacman + AUR)
+- **Unix common settings**: `provisioning/host_vars/localhost/common.yml` (/etc/hosts entries)
 
 ## Shell Environment
 

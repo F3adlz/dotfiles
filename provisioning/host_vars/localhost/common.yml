@@ -1,0 +1,5 @@
+unix_common_hosts_entries:
+  - ip: 130.255.77.28
+    hostname: ntc.party
+
+# vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:

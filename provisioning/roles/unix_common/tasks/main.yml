@@ -1,0 +1,12 @@
+---
+
+- name: Add custom entries to /etc/hosts
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    line: "{{ item.ip }} {{ item.hostname }}"
+    state: present
+  loop: "{{ unix_common_hosts_entries }}"
+  when: unix_common_hosts_entries is defined and unix_common_hosts_entries | length > 0
+
+# vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:

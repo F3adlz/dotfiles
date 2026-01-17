@@ -3,6 +3,10 @@
   hosts: localhost
   gather_facts: true
   tasks:
+    - name: Unix common configuration
+      ansible.builtin.include_role:
+        name: unix_common
+      when: ansible_facts['system'] in ['Linux', 'Darwin']
     - name: MackBook configuration
       ansible.builtin.include_role:
         name: macbook
