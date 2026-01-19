@@ -1,0 +1,6 @@
+{{ ansible_managed | comment }}
+domain {{ item.domain }}
+search {{ item.domain }}
+{% for nameserver in item.nameservers %}
+nameserver {{ nameserver }}
+{% endfor %}

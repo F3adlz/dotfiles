@@ -1,0 +1,7 @@
+---
+
+# List of domains with custom DNS resolvers
+# Each item should have:
+#   - domain: domain name (e.g., "example.com")
+#   - nameservers: list of DNS server IPs for this domain
+macos_domain_custom_dns_domains: []

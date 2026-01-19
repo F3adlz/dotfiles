@@ -36,8 +36,15 @@ ansible-playbook ~/.dotfiles/provisioning/main.yml --tags=configuration
 - Main playbook: `provisioning/main.yml`
 - OS detection via `ansible_facts['os_family']` and `ansible_facts['system']`
 - **Unix common**: `unix_common` role (applies to Linux and macOS - manages /etc/hosts)
-- **macOS**: Uses `macbook` role (Homebrew packages/casks, iTerm2 config)
+- **macOS**: Uses `macbook` role (Homebrew packages/casks, iTerm2 config, custom DNS resolvers)
 - **Arch Linux**: Uses `installation` + `configuration` roles (pacman, AUR, systemd)
+
+### Ansible Roles
+- `macos_domain_custom_dns`: Configures per-domain DNS resolvers in `/etc/resolver/` (macOS only)
+  - Creates resolver files for specific domains with custom nameservers
+  - Automatically removes resolver files for domains not in configuration
+  - Validates that each domain has at least one nameserver
+  - See: https://vninja.net/2020/02/06/macos-custom-dns-resolvers/
 
 ### Key Configuration Locations
 | Config | Source in Repo | Symlink Target |
@@ -50,10 +57,11 @@ ansible-playbook ~/.dotfiles/provisioning/main.yml --tags=configuration
 | Bat | `configs/bat/config` | `~/.config/bat/config` |
 | Terraform | `terraformrc` | `~/.terraformrc` |
 
-### Package Management
+### Package Management & Host Variables
 - **macOS packages**: `provisioning/roles/macbook/defaults/main.yml` (Homebrew casks/packages)
 - **Arch packages**: `provisioning/host_vars/localhost/installation.yml` (pacman + AUR)
 - **Unix common settings**: `provisioning/host_vars/localhost/common.yml` (/etc/hosts entries)
+- **macOS settings**: `provisioning/host_vars/localhost/macos.yml` (custom DNS resolvers per domain)
 
 ## Shell Environment
 

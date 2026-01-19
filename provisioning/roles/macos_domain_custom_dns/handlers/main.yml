@@ -1,0 +1,12 @@
+---
+
+- name: Flush DNS cache
+  ansible.builtin.command: dscacheutil -flushcache
+  changed_when: true
+  become: true
+
+- name: Restart mDNSResponder
+  ansible.builtin.command: killall -HUP mDNSResponder
+  changed_when: true
+  become: true
+  listen: Flush DNS cache

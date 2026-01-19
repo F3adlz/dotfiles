@@ -1,0 +1,19 @@
+# DNS servers from Comss.one
+# Source: https://www.comss.ru/page.php?id=7315
+comss_dns_servers:
+  - 83.220.169.155
+  - 212.109.195.93
+
+macbook_domain_custom_dns_domains:
+  - domain: chatgpt.com
+    nameservers: "{{ comss_dns_servers }}"
+  - domain: anthropic.com
+    nameservers: "{{ comss_dns_servers }}"
+  - domain: claude.com
+    nameservers: "{{ comss_dns_servers }}"
+  - domain: claude.ai
+    nameservers: "{{ comss_dns_servers }}"
+  - domain: deepl.com
+    nameservers: "{{ comss_dns_servers }}"
+
+# vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:
