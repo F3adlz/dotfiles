@@ -5,15 +5,17 @@ comss_dns_servers:
   - 212.109.195.93
 
 macbook_domain_custom_dns_domains:
-  - domain: chatgpt.com
-    nameservers: "{{ comss_dns_servers }}"
   - domain: anthropic.com
     nameservers: "{{ comss_dns_servers }}"
-  - domain: claude.com
+  - domain: chatgpt.com
     nameservers: "{{ comss_dns_servers }}"
   - domain: claude.ai
     nameservers: "{{ comss_dns_servers }}"
+  - domain: claude.com
+    nameservers: "{{ comss_dns_servers }}"
   - domain: deepl.com
+    nameservers: "{{ comss_dns_servers }}"
+  - domain: gemini.google.com
     nameservers: "{{ comss_dns_servers }}"
 
 # vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:
