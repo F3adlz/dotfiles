@@ -36,8 +36,11 @@ ansible-playbook ~/.dotfiles/provisioning/main.yml --tags=configuration
 - Main playbook: `provisioning/main.yml`
 - OS detection via `ansible_facts['os_family']` and `ansible_facts['system']`
 - **Unix common**: `unix_common` role (applies to Linux and macOS - manages /etc/hosts)
-- **macOS**: Uses `macbook` role (Homebrew packages/casks, iTerm2 config, custom DNS resolvers)
+- **macOS**: Uses `macbook` role (Homebrew packages/casks, iTerm2 config, Touch ID for sudo, custom DNS resolvers)
 - **Arch Linux**: Uses `installation` + `configuration` roles (pacman, AUR, systemd)
+
+### Ansible Configuration
+- `become_flags = -H` in `provisioning/ansible.cfg`: Removes default `-S` flag so that sudo uses PAM/Touch ID instead of stdin for authentication
 
 ### Ansible Roles
 - `macos_domain_custom_dns`: Configures per-domain DNS resolvers in `/etc/resolver/` (macOS only)

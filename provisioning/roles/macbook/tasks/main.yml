@@ -54,6 +54,15 @@
       ansible.builtin.file:
         path: /tmp/mbadolato
         state: absent
+- name: Enable Touch ID for sudo authentication
+  ansible.builtin.lineinfile:
+    path: /etc/pam.d/sudo_local
+    line: "auth       sufficient     pam_tid.so"
+    create: yes
+    mode: "0444"
+    owner: root
+    group: wheel
+  become: true
 - name: Configure custom DNS resolvers
   ansible.builtin.include_role:
     name: macos_domain_custom_dns
