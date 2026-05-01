@@ -17,5 +17,7 @@ macbook_domain_custom_dns_domains:
     nameservers: "{{ comss_dns_servers }}"
   - domain: gemini.google.com
     nameservers: "{{ comss_dns_servers }}"
+  - domain: openai.com
+    nameservers: "{{ comss_dns_servers }}"
 
 # vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:
