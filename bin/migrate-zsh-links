@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+set -eu
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+resolve_link_target() {
+    local link_path="$1"
+    local target
+
+    target="$(readlink "${link_path}")"
+    if [[ "${target}" != /* ]]; then
+        target="$(dirname "${link_path}")/${target}"
+    fi
+
+    (
+        cd "$(dirname "${target}")" 2>/dev/null &&
+            printf '%s/%s\n' "$(pwd -P)" "$(basename "${target}")"
+    )
+}
+
+migrate_link() {
+    local legacy_path="$1"
+    local source_path="$2"
+    local actual_target
+    local expected_target
+
+    if [[ ! -L "${legacy_path}" ]]; then
+        if [[ -e "${legacy_path}" ]]; then
+            printf 'Keeping existing file: %s\n' "${legacy_path}" >&2
+        fi
+        return
+    fi
+
+    actual_target="$(resolve_link_target "${legacy_path}" || true)"
+    expected_target="$(
+        cd "$(dirname "${source_path}")" &&
+            printf '%s/%s\n' "$(pwd -P)" "$(basename "${source_path}")"
+    )"
+
+    if [[ "${actual_target}" == "${expected_target}" ]]; then
+        rm "${legacy_path}"
+        printf 'Removed legacy Zsh link: %s\n' "${legacy_path}"
+    else
+        printf 'Keeping foreign symbolic link: %s -> %s\n' \
+            "${legacy_path}" "$(readlink "${legacy_path}")" >&2
+    fi
+}
+
+migrate_link "${HOME}/.zprofile" "${BASEDIR}/dotfiles/zsh/zprofile"
+migrate_link "${HOME}/.zshrc" "${BASEDIR}/zsh/zshrc"

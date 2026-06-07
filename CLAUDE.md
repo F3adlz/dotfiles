@@ -54,7 +54,9 @@ ansible-playbook ~/.dotfiles/provisioning/main.yml --tags=configuration
 |--------|----------------|----------------|
 | Git | `git/.gitconfig`, `git/.gitignore` | `~/.gitconfig`, `~/.gitignore` |
 | Vim | `dotfiles/vim/.vimrc`, `dotfiles/vim/.ideavimrc` | `~/.vimrc`, `~/.ideavimrc` |
-| ZSH | `zsh/zshrc`, `zsh/zshenv` | `~/.zshrc`, `~/.zshenv` |
+| ZSH environment | `zsh/zshenv` | `~/.zshenv` |
+| ZSH login profile | `dotfiles/zsh/zprofile` | `~/.config/zsh/.zprofile` |
+| ZSH interactive config | `zsh/zshrc` | `~/.config/zsh/.zshrc` |
 | ZSH plugins | `dotfiles/zsh/plugins/.zsh_plugins.txt` | `~/.config/zsh/.zsh_plugins.txt` |
 | Aliases | `dotfiles/zsh/zsh-custom/aliases.zsh` | `~/.config/zsh/.zsh-custom/aliases.zsh` |
 | Bat | `configs/bat/config` | `~/.config/bat/config` |
@@ -69,6 +71,7 @@ ansible-playbook ~/.dotfiles/provisioning/main.yml --tags=configuration
 ## Shell Environment
 
 - ZSH with Antidote plugin manager
+- `~/.zshenv` exports `ZDOTDIR=~/.config/zsh`; machine-specific environment variables belong in unmanaged `~/.zshenv.local`
 - Atuin for command history synchronization
 - Modern CLI replacements: bat (cat), eza (ls), fd (find), ripgrep (grep), zoxide (cd), delta (git diff)
 
