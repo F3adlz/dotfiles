@@ -38,3 +38,5 @@ if is_macos; then
 else
     export SYSTEMD_EDITOR=$EDITOR
 fi
+
+export OPENSPEC_TELEMETRY=0
