@@ -25,7 +25,7 @@
     ~/.local/bin/git-fuck: bin/git-fuck
     ~/.ideavimrc: dotfiles/vim/.ideavimrc
     ~/.terraformrc: terraformrc
-    ~/.config/zsh/.zsh-custom/: dotfiles/zsh/zsh-custom/
+    ~/.config/zsh/.zsh-custom: dotfiles/zsh/zsh-custom
     ~/.config/bat/config: configs/bat/config
     ~/.config/zsh/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
