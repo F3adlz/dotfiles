@@ -1,36 +1,36 @@
 macbook_macos_iterm2_color_schemes_dir: /tmp/mbadolato/iTerm2-Color-Schemes
 
 macbook_homebrew_casks:
-  - alfred
-  - alt-tab
-  - betterdisplay
-  - chromium
-  - datagrip
-  - docker
-  - firefox
-  - flameshot
-  - font-hack
-  - font-hack-nerd-font
-  - gimp
-  - git-credential-manager
-  - httpie
-  - intellij-idea
-  - iterm2
-  - keepassxc
-  - keka
-  - mattermost
-  - megasync
-  - obsidian
-  - openvpn-connect
-  - rectangle
-  - steam
-  - temurin@17
-  - thunderbird
-  - vlc
-  - vscodium
-  - yandex-cloud-cli
-  - zed
-  - zoom
+  - name: alfred
+  - name: alt-tab
+  - name: betterdisplay
+  - name: chromium
+  - name: datagrip
+  - name: docker
+  - name: firefox
+  - name: flameshot
+  - name: font-hack
+  - name: font-hack-nerd-font
+  - name: gimp
+  - name: git-credential-manager
+  - name: httpie
+  - name: intellij-idea
+  - name: iterm2
+  - name: keepassxc
+  - name: keka
+  - name: mattermost
+  - name: megasync
+  - name: obsidian
+  - name: openvpn-connect
+  - name: rectangle
+  - name: steam
+  - name: temurin@17
+  - name: thunderbird
+  - name: vlc
+  - name: vscodium
+  - name: yandex-cloud-cli
+  - name: zed
+  - name: zoom
 
 macbook_homebrew_packages:
   - name: ansible-lint
