@@ -83,11 +83,6 @@ function fzf_open_in_editor() {
 # bindkey '^[o' fzf_open_in_editor
 alias o="fzf_open_in_editor"
 
-#============= fubectl =============#
-# https://github.com/kubermatic/fubectl
-
-unalias ked
-unalias kdel
 eval "$(zoxide init --cmd j zsh)" # Zoxide configuration
 
 # Enable zsh-autocomplete plugin
