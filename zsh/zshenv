@@ -8,6 +8,21 @@ if [ -f ~/.zshenv.local ]; then
     source ~/.zshenv.local
 fi
 
+typeset -U path PATH
+
+# Add user-installed CLI tools when available.
+[[ -d "$HOME/.local/bin" ]] && path+=("$HOME/.local/bin")
+
+# Add LM Studio CLI on supported macOS and Linux installations.
+[[ -d "$HOME/.lmstudio/bin" ]] && path+=("$HOME/.lmstudio/bin")
+
+# Add Rancher Desktop CLI only on macOS installations.
+if is_macos && [[ -d "$HOME/.rd/bin" ]]; then
+    path=("$HOME/.rd/bin" $path)
+fi
+
+export PATH
+
 export VIEWER="view"
 export EDITOR="vim"
 
