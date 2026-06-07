@@ -32,4 +32,4 @@
     ~/.config/spaceship/spaceship.zsh: dotfiles/zsh/spaceship.zsh
     ~/.config/zsh/.zprofile: dotfiles/zsh/zprofile
     ~/.config/zsh/.zsh_plugins.txt: dotfiles/zsh/plugins/.zsh_plugins.txt
-    ~/.config/zsh/ohmyzsh.zsh_plugins.txt: dotfiles/zsh/plugins/ohmyzsh.zsh_plugins.txt
+    ~/.config/zsh/.ohmyzsh.zsh_plugins.txt: dotfiles/zsh/plugins/ohmyzsh.zsh_plugins.txt

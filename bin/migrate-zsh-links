@@ -49,3 +49,6 @@ migrate_link() {
 
 migrate_link "${HOME}/.zprofile" "${BASEDIR}/dotfiles/zsh/zprofile"
 migrate_link "${HOME}/.zshrc" "${BASEDIR}/zsh/zshrc"
+migrate_link \
+    "${HOME}/.config/zsh/ohmyzsh.zsh_plugins.txt" \
+    "${BASEDIR}/dotfiles/zsh/plugins/ohmyzsh.zsh_plugins.txt"
