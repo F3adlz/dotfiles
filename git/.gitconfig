@@ -1,7 +1,8 @@
 [core]
     excludesfile = ~/.gitignore
     editor = vim
-	autocrlf = input
+    autocrlf = input
+    eol = lf
 
 [rerere]
     enabled = true
@@ -39,26 +40,36 @@
     syntax-theme = ansi
     side-by-side = true
 
-[credential]
-    helper = cache --timeout=18000
-	helper = 
-	helper = /usr/bin/git-credential-manager
-
 [pull]
-	ff = only
+    ff = only
 
 [rebase]
-	autosquash = true
+    autosquash = true
 
 [alias]
-	last = log -1 HEAD
+    last = log -1 HEAD
     slast = show HEAD
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
+
+[user]
+    name = Kirill Fedorov
+    email = mistake.klg@gmail.com
 
 [credential]
-    credentialStore = gpg
+    helper =
+    # Resolves to `git credential-manager` through PATH.
+    helper = manager
+
+[diff "ansible-vault"]
+    textconv = ansible-vault view
+
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 
 [include]
-    path = ~/.gitconfig_local
+    path = ~/.gitconfig.local
