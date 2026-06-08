@@ -13,6 +13,7 @@ macbook_homebrew_casks:
   - name: font-hack-nerd-font
   - name: gimp
   - name: git-credential-manager
+  - name: grandperspective
   - name: httpie
   - name: intellij-idea
   - name: iterm2
@@ -31,6 +32,7 @@ macbook_homebrew_casks:
   - name: yandex-cloud-cli
   - name: zed
   - name: zoom
+  - name: thaw
 
 macbook_homebrew_packages:
   - name: ansible-lint
@@ -50,6 +52,8 @@ macbook_homebrew_packages:
   - name: glab
   - name: git-crypt
   - name: gpg
+  - name: gron
+    url: https://github.com/tomnomnom/gron
   - name: hashicorp/tap/terraform
   - name: helm
   - name: htop
