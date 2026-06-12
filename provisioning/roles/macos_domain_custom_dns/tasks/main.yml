@@ -14,6 +14,7 @@
     path: /etc/resolver
     state: directory
     mode: '0755'
+  when: macos_domain_custom_dns_domains | length > 0
   become: true
 
 - name: Configure custom DNS resolvers for domains
@@ -25,18 +26,24 @@
   become: true
   notify: Flush DNS cache
 
+- name: Check whether /etc/resolver exists
+  ansible.builtin.stat:
+    path: /etc/resolver
+  register: macos_domain_custom_dns_resolver_directory
+
 - name: List configured resolver files
   ansible.builtin.find:
     paths: /etc/resolver
     file_type: file
   register: macos_domain_custom_dns_existing_files
+  when: macos_domain_custom_dns_resolver_directory.stat.isdir | default(false)
   become: true
 
 - name: Remove resolver files for domains not in configuration
   ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
-  loop: "{{ macos_domain_custom_dns_existing_files.files }}"
+  loop: "{{ macos_domain_custom_dns_existing_files.files | default([]) }}"
   when: item.path | basename not in macos_domain_custom_dns_domains | map(attribute='domain') | list
   become: true
   notify: Flush DNS cache

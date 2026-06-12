@@ -1,5 +1,7 @@
 macbook_macos_iterm2_color_schemes_dir: /tmp/mbadolato/iTerm2-Color-Schemes
 
+macbook_domain_custom_dns_domains: []
+
 macbook_homebrew_casks:
   - name: alfred
   - name: alt-tab

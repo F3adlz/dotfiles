@@ -68,4 +68,3 @@
     name: macos_domain_custom_dns
   vars:
     macos_domain_custom_dns_domains: "{{ macbook_domain_custom_dns_domains }}"
-  when: macbook_domain_custom_dns_domains is defined and macbook_domain_custom_dns_domains | length > 0
