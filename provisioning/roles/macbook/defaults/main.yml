@@ -3,40 +3,90 @@ macbook_macos_iterm2_color_schemes_dir: /tmp/mbadolato/iTerm2-Color-Schemes
 macbook_domain_custom_dns_domains: []
 
 macbook_homebrew_casks:
+  - name: agentsview
+  - name: aldente
   - name: alfred
-  - name: alt-tab
+  - name: anydesk
+  - name: anytype
+  - name: bettercmdtab
   - name: betterdisplay
+  - name: betterzip
+  - name: beyond-compare
+  - name: bruno
+  - name: buzz
+  - name: chatgpt
   - name: chromium
+  - name: clash-verge-rev
+  - name: claude
+  - name: claude-code
+  - name: codex
+  - name: codex-app
+  - name: commander-one
+  - name: cyberduck
   - name: datagrip
+  - name: deepl
   - name: docker
+  - name: drawio
   - name: firefox
   - name: flameshot
   - name: font-hack
   - name: font-hack-nerd-font
+  - name: freecad
+  - name: freelens
   - name: gimp
   - name: git-credential-manager
+  - name: goland
+  - name: google-chrome
   - name: grandperspective
   - name: httpie
+  - name: iina
+  - name: imazing
   - name: intellij-idea
   - name: iterm2
+  - name: itsycal
+  - name: jdk-mission-control
+  - name: jetbrains-air
+  - name: jetpackduba/apps/gitnuro
+  - name: jordanbaird-ice
   - name: keepassxc
   - name: keka
+  - name: lm-studio
+  - name: logitech-g-hub
   - name: mattermost
   - name: megasync
+  - name: microsoft-auto-update
+  - name: microsoft-office
+  - name: obs
   - name: obsidian
+  - name: openusage
   - name: openvpn-connect
+  - name: podman-desktop
+  - name: pycharm
+  - name: qbittorrent
   - name: rectangle
   - name: steam
+  - name: stellarium
+  - name: suspicious-package
   - name: temurin@17
+  - name: thaw
   - name: thunderbird
+  - name: tor-browser
+  - name: tradingview
+  - name: tunnelblick
+  - name: virtualbox
+  - name: visual-studio-code
   - name: vlc
   - name: vscodium
+  - name: webstorm
+  - name: whisky
+  - name: wireshark-app
   - name: yandex-cloud-cli
   - name: zed
+  - name: zenmap
   - name: zoom
-  - name: thaw
 
 macbook_homebrew_packages:
+  - name: ansible
   - name: ansible-lint
   - name: antidote
   - name: atuin
@@ -45,33 +95,87 @@ macbook_homebrew_packages:
   - name: bat
     url: https://github.com/sharkdp/bat
     description: Modern cat replacement
-  - name: git-delta
-    description: Git diff pager with syntax highlighting
-    url: https://github.com/dandavison/delta
+  - name: bpython
+  - name: btop
+  - name: ccusage
+  - name: cdktf
+  - name: convmv
+  - name: ddrescue
+  - name: dive
+  - name: docker-compose
+  - name: duf
   - name: eza
   - name: fd
   - name: fzf
-  - name: glab
+  - name: gh
   - name: git-crypt
+  - name: git-delta
+    description: Git diff pager with syntax highlighting
+    url: https://github.com/dandavison/delta
+  - name: git-lfs
+  - name: glab
+  - name: glow
+  - name: go
+  - name: go-task
   - name: gpg
+  - name: gradle
   - name: gron
     url: https://github.com/tomnomnom/gron
+  - name: hakky54/crip/crip
   - name: hashicorp/tap/terraform
+  - name: hashicorp/tap/vault
   - name: helm
+  - name: helm-docs
   - name: htop
   - name: httpie
+  - name: iperf
   - name: jq
+  - name: krew
   - name: kubectl
   - name: kubectx
+  - name: lazydocker
+  - name: lazygit
+  - name: lazyssh
+  - name: libmagic
+  - name: libpq
+  - name: liquibase
+  - name: maven
   - name: mc
+  - name: ncdu
+  - name: nmap
   - name: node
+  - name: openapi-diff
   - name: openconnect
-  - name: python
+  - name: openspec
+  - name: pipx
+  - name: pnpm
+  - name: podman
+  - name: prettyping
   - name: pwgen
+  - name: python
+  - name: python@3.13
+  - name: python@3.9
+  - name: qrencode
   - name: rg
+  - name: showkey
+  - name: spectral-cli
+  - name: speedtest-cli
+  - name: subfinder
   - name: telnet
+  - name: testdisk
   - name: tldr
+  - name: tox
+  - name: tree
+  - name: trippy
+  - name: uv
   - name: viddy
     description: Modern watch alternative
     url: https://github.com/sachaos/viddy
+  - name: vpn-slice
+  - name: wireshark
+  - name: yarn
+  - name: yt-dlp
+  - name: yuccastream/tap/tuna
+  - name: zellij
   - name: zoxide
+  - name: zrok
