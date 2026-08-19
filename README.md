@@ -1,6 +1,6 @@
 # Provisioning
 ```sh
-ansible-galaxy collection install --requirements-file ~/.dotfiles/provisioning/requirements.yml
+ansible-galaxy collection install --upgrade --requirements-file ~/.dotfiles/provisioning/requirements.yml
 ansible-playbook ~/.dotfiles/provisioning/main.yml
 ```
 # Dotfiles

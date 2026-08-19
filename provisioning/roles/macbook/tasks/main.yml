@@ -1,11 +1,8 @@
 ---
 
-- name: Tap repositories
+- name: Tap and trust third-party repositories
   community.general.homebrew_tap:
     name:
-      # https://github.com/Homebrew/homebrew-cask-fonts
-      - homebrew/cask-fonts
-      - homebrew/cask-versions
       - hashicorp/tap
       # https://github.com/buo/homebrew-cask-upgrade
       - buo/cask-upgrade
@@ -13,6 +10,7 @@
       - jetpackduba/apps
       - micronaut-projects/tap
       - yuccastream/tap
+    trust: true
 - name: Homebrew | Install packages
   community.general.homebrew:
     name: "{{ item.name }}"
