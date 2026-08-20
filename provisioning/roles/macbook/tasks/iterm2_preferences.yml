@@ -1,0 +1,105 @@
+---
+
+- name: MacOS | iTerm2 | Create temporary preferences file
+  ansible.builtin.tempfile:
+    path: /tmp
+    prefix: ansible-iterm2-
+    suffix: .plist
+    state: file
+  changed_when: false
+  register: macbook_iterm2_preferences_file
+- name: MacOS | iTerm2 | Manage profile closing confirmation
+  block:
+    - name: MacOS | iTerm2 | Export preferences
+      ansible.builtin.command:
+        argv:
+          - /usr/bin/defaults
+          - export
+          - com.googlecode.iterm2
+          - "{{ macbook_iterm2_preferences_file.path }}"
+      changed_when: false
+    - name: MacOS | iTerm2 | Read profiles
+      ansible.builtin.command:
+        argv:
+          - /usr/bin/plutil
+          - -extract
+          - New Bookmarks
+          - json
+          - -o
+          - '-'
+          - "{{ macbook_iterm2_preferences_file.path }}"
+      changed_when: false
+      register: macbook_iterm2_profiles_output
+    - name: MacOS | iTerm2 | Read default profile GUID
+      ansible.builtin.command:
+        argv:
+          - /usr/bin/plutil
+          - -extract
+          - Default Bookmark Guid
+          - raw
+          - -o
+          - '-'
+          - "{{ macbook_iterm2_preferences_file.path }}"
+      changed_when: false
+      register: macbook_iterm2_default_profile_guid
+    - name: MacOS | iTerm2 | Parse profiles
+      ansible.builtin.set_fact:
+        macbook_iterm2_profiles: "{{ macbook_iterm2_profiles_output.stdout | from_json }}"
+    - name: MacOS | iTerm2 | Verify default profile exists
+      ansible.builtin.assert:
+        that:
+          - >-
+            macbook_iterm2_default_profile_guid.stdout in
+            (macbook_iterm2_profiles | map(attribute='Guid') | list)
+        fail_msg: Launch iTerm2 once to create its default profile, then rerun the playbook.
+    - name: MacOS | iTerm2 | Select default profile
+      ansible.builtin.set_fact:
+        macbook_iterm2_default_profile_index: >-
+          {{ (macbook_iterm2_profiles | map(attribute='Guid') | list).index(
+            macbook_iterm2_default_profile_guid.stdout
+          ) }}
+    - name: MacOS | iTerm2 | Configure closing confirmation mode
+      ansible.builtin.command:
+        argv:
+          - /usr/bin/plutil
+          - "{{ '-replace' if 'Prompt Before Closing 2' in macbook_iterm2_profiles[macbook_iterm2_default_profile_index] else '-insert' }}"
+          - "New Bookmarks.{{ macbook_iterm2_default_profile_index }}.Prompt Before Closing 2"
+          - -integer
+          - "{{ macbook_macos_iterm2_prompt_before_closing_mode }}"
+          - "{{ macbook_iterm2_preferences_file.path }}"
+      changed_when: false
+      when: >-
+        macbook_iterm2_profiles[macbook_iterm2_default_profile_index].get('Prompt Before Closing 2')
+        != macbook_macos_iterm2_prompt_before_closing_mode
+    - name: MacOS | iTerm2 | Configure jobs ignored when closing
+      ansible.builtin.command:
+        argv:
+          - /usr/bin/plutil
+          - "{{ '-replace' if 'Jobs to Ignore' in macbook_iterm2_profiles[macbook_iterm2_default_profile_index] else '-insert' }}"
+          - "New Bookmarks.{{ macbook_iterm2_default_profile_index }}.Jobs to Ignore"
+          - -json
+          - "{{ macbook_macos_iterm2_jobs_to_ignore | to_json }}"
+          - "{{ macbook_iterm2_preferences_file.path }}"
+      changed_when: false
+      when: >-
+        macbook_iterm2_profiles[macbook_iterm2_default_profile_index].get('Jobs to Ignore')
+        != macbook_macos_iterm2_jobs_to_ignore
+    - name: MacOS | iTerm2 | Import configured preferences
+      ansible.builtin.command:
+        argv:
+          - /usr/bin/defaults
+          - import
+          - com.googlecode.iterm2
+          - "{{ macbook_iterm2_preferences_file.path }}"
+      changed_when: true
+      when: >-
+        macbook_iterm2_profiles[macbook_iterm2_default_profile_index].get('Prompt Before Closing 2')
+        != macbook_macos_iterm2_prompt_before_closing_mode
+        or macbook_iterm2_profiles[macbook_iterm2_default_profile_index].get('Jobs to Ignore')
+        != macbook_macos_iterm2_jobs_to_ignore
+  always:
+    - name: MacOS | iTerm2 | Remove temporary preferences file
+      ansible.builtin.file:
+        path: "{{ macbook_iterm2_preferences_file.path }}"
+        state: absent
+      changed_when: false

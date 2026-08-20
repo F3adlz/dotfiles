@@ -1,4 +1,11 @@
 macbook_macos_iterm2_color_schemes_dir: /tmp/mbadolato/iTerm2-Color-Schemes
+# Prompt only when a job outside the ignore list is running.
+macbook_macos_iterm2_prompt_before_closing_mode: 2
+macbook_macos_iterm2_jobs_to_ignore:
+  - rlogin
+  - slogin
+  - telnet
+  - zsh
 
 macbook_domain_custom_dns_domains: []
 
