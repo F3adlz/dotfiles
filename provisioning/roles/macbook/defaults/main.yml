@@ -1,4 +1,6 @@
 macbook_macos_iterm2_color_schemes_dir: /tmp/mbadolato/iTerm2-Color-Schemes
+macbook_macos_iterm2_preferences_backup_file: >-
+  {{ ansible_env.HOME }}/Library/Preferences/com.googlecode.iterm2.plist.ansible-backup-{{ ansible_date_time.epoch }}
 # Prompt only when a job outside the ignore list is running.
 macbook_macos_iterm2_prompt_before_closing_mode: 2
 macbook_macos_iterm2_jobs_to_ignore:

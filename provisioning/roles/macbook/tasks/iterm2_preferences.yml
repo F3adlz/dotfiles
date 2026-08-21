@@ -58,6 +58,40 @@
           {{ (macbook_iterm2_profiles | map(attribute='Guid') | list).index(
             macbook_iterm2_default_profile_guid.stdout
           ) }}
+    - name: MacOS | iTerm2 | Detect preferences drift
+      ansible.builtin.set_fact:
+        macbook_iterm2_preferences_need_update: >-
+          {{
+            macbook_iterm2_profiles[macbook_iterm2_default_profile_index].get('Prompt Before Closing 2')
+            != macbook_macos_iterm2_prompt_before_closing_mode
+            or macbook_iterm2_profiles[macbook_iterm2_default_profile_index].get('Jobs to Ignore')
+            != macbook_macos_iterm2_jobs_to_ignore
+          }}
+    - name: MacOS | iTerm2 | Check whether iTerm2 is running
+      ansible.builtin.command:
+        argv:
+          - /usr/bin/pgrep
+          - -x
+          - iTerm2
+      changed_when: false
+      failed_when: macbook_iterm2_process.rc not in [0, 1]
+      register: macbook_iterm2_process
+      when: macbook_iterm2_preferences_need_update
+    - name: MacOS | iTerm2 | Require iTerm2 to be closed
+      ansible.builtin.assert:
+        that:
+          - macbook_iterm2_process.rc == 1
+        fail_msg: >-
+          Quit iTerm2 and rerun the playbook from Terminal.app or an SSH session so that iTerm2
+          cannot overwrite the imported preferences.
+      when: macbook_iterm2_preferences_need_update
+    - name: MacOS | iTerm2 | Back up preferences before import
+      ansible.builtin.copy:
+        src: "{{ macbook_iterm2_preferences_file.path }}"
+        dest: "{{ macbook_macos_iterm2_preferences_backup_file }}"
+        mode: "0600"
+        remote_src: true
+      when: macbook_iterm2_preferences_need_update
     - name: MacOS | iTerm2 | Configure closing confirmation mode
       ansible.builtin.command:
         argv:
@@ -85,18 +119,27 @@
         macbook_iterm2_profiles[macbook_iterm2_default_profile_index].get('Jobs to Ignore')
         != macbook_macos_iterm2_jobs_to_ignore
     - name: MacOS | iTerm2 | Import configured preferences
-      ansible.builtin.command:
-        argv:
-          - /usr/bin/defaults
-          - import
-          - com.googlecode.iterm2
-          - "{{ macbook_iterm2_preferences_file.path }}"
-      changed_when: true
-      when: >-
-        macbook_iterm2_profiles[macbook_iterm2_default_profile_index].get('Prompt Before Closing 2')
-        != macbook_macos_iterm2_prompt_before_closing_mode
-        or macbook_iterm2_profiles[macbook_iterm2_default_profile_index].get('Jobs to Ignore')
-        != macbook_macos_iterm2_jobs_to_ignore
+      when: macbook_iterm2_preferences_need_update
+      block:
+        - name: MacOS | iTerm2 | Import preferences domain
+          ansible.builtin.command:
+            argv:
+              - /usr/bin/defaults
+              - import
+              - com.googlecode.iterm2
+              - "{{ macbook_iterm2_preferences_file.path }}"
+          changed_when: true
+      rescue:
+        - name: MacOS | iTerm2 | Report retained preferences backup
+          ansible.builtin.fail:
+            msg: >-
+              Failed to import iTerm2 preferences. The previous preferences were retained at
+              {{ macbook_macos_iterm2_preferences_backup_file }}.
+    - name: MacOS | iTerm2 | Remove backup after successful import
+      ansible.builtin.file:
+        path: "{{ macbook_macos_iterm2_preferences_backup_file }}"
+        state: absent
+      when: macbook_iterm2_preferences_need_update
   always:
     - name: MacOS | iTerm2 | Remove temporary preferences file
       ansible.builtin.file:
