@@ -147,9 +147,6 @@ macbook_homebrew_casks:
   - name: jetpackduba/apps/gitnuro
     description: FOSS multiplatform git client
     url: https://gitnuro.com
-  - name: jordanbaird-ice
-    description: Menu bar manager
-    url: https://icemenubar.app/
   - name: keepassxc
     description: Password manager app
     url: https://keepassxc.org/
