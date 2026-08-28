@@ -13,88 +13,254 @@ macbook_domain_custom_dns_domains: []
 
 macbook_homebrew_casks:
   - name: agentsview
+    description: Browse, search and analyse your past AI coding sessions
+    url: https://www.agentsview.io/
   - name: aldente
+    description: Menu bar tool to limit maximum charging percentage
+    url: https://apphousekitchen.com/
   - name: alfred
+    description: Application launcher and productivity software
+    url: https://www.alfredapp.com/
   - name: anydesk
+    description: Allows connection to a computer remotely
+    url: https://anydesk.com/
   - name: anytype
+    description: Local-first and end-to-end encrypted notes app
+    url: https://anytype.io/
   - name: bettercmdtab
+    description: Replacement for the built-in Cmd+Tab app switcher
+    url: https://bettercmdtab.app/
   - name: betterdisplay
+    description: Display management tool
+    url: https://betterdisplay.pro/
   - name: betterzip
+    description: Utility to create and modify archives
+    url: https://macitbetter.com/
   - name: beyond-compare
+    description: Compare files and folders
+    url: https://www.scootersoftware.com/
   - name: bruno
+    description: Open source IDE for exploring and testing APIs
+    url: https://www.usebruno.com/
   - name: buzz
+    description: Transcribe and translate audio
+    url: https://github.com/chidiwilliams/buzz
   - name: chatgpt
+    description: OpenAI's official ChatGPT desktop app
+    url: https://chatgpt.com/
   - name: chromium
+    description: Free and open-source web browser
+    url: https://www.chromium.org/Home
   - name: clash-verge-rev
+    description: Continuation of Clash Verge - A Clash Meta GUI based on Tauri
+    url: https://clash-verge-rev.github.io/
   - name: claude
+    description: Anthropic's official Claude AI desktop app
+    url: https://claude.com/download
   - name: claude-code
+    description: Terminal-based AI coding assistant
+    url: https://claude.com/product/claude-code
   - name: codex
+    description: OpenAI's coding agent that runs in your terminal
+    url: https://github.com/openai/codex
   - name: codex-app
+    description: OpenAI's Codex desktop app for managing coding agents
+    url: https://openai.com/codex
   - name: commander-one
+    description: Two-panel file manager
+    url: https://mac.eltima.com/file-manager.html
   - name: cyberduck
+    description: Server and cloud storage browser
+    url: https://cyberduck.io/
   - name: datagrip
+    description: Databases and SQL IDE
+    url: https://www.jetbrains.com/datagrip/
   - name: deepl
+    description: AI-powered translator
+    url: https://www.deepl.com/
   - name: discord
+    description: Voice and text chat software
+    url: https://discord.com/
   - name: docker-desktop
+    description: App to build and share containerised applications and microservices
+    url: https://www.docker.com/products/docker-desktop
   - name: drawio
+    description: Online diagram software
+    url: https://www.diagrams.net/
   - name: firefox
+    description: Web browser
+    url: https://www.mozilla.org/firefox/
   - name: flameshot
+    description: Screenshot software with built-in annotation tools
+    url: https://flameshot.org/
   - name: font-hack
+    description: Typeface designed for source code
+    url: https://sourcefoundry.org/hack/
   - name: font-hack-nerd-font
+    description: Hack typeface patched with Nerd Fonts glyphs
+    url: https://github.com/ryanoasis/nerd-fonts
   - name: freecad
+    description: 3D parametric modeller
+    url: https://www.freecad.org/
   - name: freelens
+    description: Kubernetes IDE
+    url: https://freelens.app/
   - name: gimp
+    description: Free and open-source image editor
+    url: https://www.gimp.org/
   - name: git-credential-manager
+    description: Cross-platform Git credential storage for multiple hosting providers
+    url: https://aka.ms/gcm
   - name: goland
+    description: Go (golang) IDE
+    url: https://www.jetbrains.com/go/
   - name: google-chrome
+    description: Web browser
+    url: https://www.google.com/chrome/
   - name: grandperspective
+    description: Graphically shows disk usage within a file system
+    url: https://grandperspectiv.sourceforge.net/
   - name: httpie-desktop
+    description: Testing client for REST, GraphQL, and HTTP APIs
+    url: https://httpie.io/product
   - name: iina
+    description: Free and open-source media player
+    url: https://iina.io/
   - name: imazing
+    description: iPhone management application
+    url: https://imazing.com/
   - name: intellij-idea
+    description: Java IDE by JetBrains
+    url: https://www.jetbrains.com/idea/
   - name: iterm2
+    description: Terminal emulator as alternative to Apple's Terminal app
+    url: https://iterm2.com/
   - name: itsycal
+    description: Menu bar calendar
+    url: https://www.mowglii.com/itsycal/
   - name: jdk-mission-control
+    description: Tools to manage, monitor, profile and troubleshoot Java applications
+    url: https://jdk.java.net/jmc/9/
   - name: jetbrains-air
+    description: Agentic development environment
+    url: https://air.dev/
   - name: jetpackduba/apps/gitnuro
+    description: FOSS multiplatform git client
+    url: https://gitnuro.com
   - name: jordanbaird-ice
+    description: Menu bar manager
+    url: https://icemenubar.app/
   - name: keepassxc
+    description: Password manager app
+    url: https://keepassxc.org/
   - name: keka
+    description: File archiver
+    url: https://www.keka.io/
   - name: lm-studio
+    description: Discover, download, and run local LLMs
+    url: https://lmstudio.ai/
   - name: logitech-g-hub
+    description: Support for Logitech G gear
+    url: https://www.logitechg.com/en-us/innovation/g-hub.html
   - name: mattermost
+    description: Open-source, self-hosted Slack-alternative
+    url: https://mattermost.com/
   - name: megasync
+    description: Syncs files between computers and MEGA Cloud drives
+    url: https://mega.nz/sync
   - name: microsoft-auto-update
+    description: Provides updates to various Microsoft products
+    url: https://docs.microsoft.com/officeupdates/release-history-microsoft-autoupdate
   - name: microsoft-office
+    description: Office suite
+    url: https://www.microsoft.com/en-us/microsoft-365/mac/microsoft-365-for-mac/
   - name: obs
+    description: Open-source software for live streaming and screen recording
+    url: https://obsproject.com/
   - name: obsidian
+    description: Knowledge base that works on top of a local folder of plain text Markdown files
+    url: https://obsidian.md/
   - name: openusage
+    description: AI usage tracker for Cursor, Claude Code, Codex, Copilot and more
+    url: https://www.openusage.ai/
   - name: openvpn-connect
+    description: Client program for the OpenVPN Access Server
+    url: https://openvpn.net/client-connect-vpn-for-mac-os/
   - name: podman-desktop
+    description: Browse, manage, inspect containers and images
+    url: https://podman-desktop.io/
   - name: pycharm
+    description: IDE for professional Python development
+    url: https://www.jetbrains.com/pycharm/
   - name: qbittorrent
+    description: Peer to peer Bitorrent client
+    url: https://www.qbittorrent.org/
   - name: rectangle
+    description: Move and resize windows using keyboard shortcuts or snap areas
+    url: https://rectangleapp.com/
   - name: stablyai/orca/orca
+    description: IDE for orchestrating AI coding agents across terminals and worktrees
+    url: https://onorca.dev/
   - name: steam
+    description: Video game digital distribution service
+    url: https://store.steampowered.com/about/
   - name: stellarium
+    description: Tool to render realistic skies in real time on the screen
+    url: https://stellarium.org/
   - name: suspicious-package
+    description: Application for inspecting installer packages
+    url: https://www.mothersruin.com/software/SuspiciousPackage/
   - name: temurin@17
+    description: JDK from the Eclipse Foundation (Adoptium)
+    url: https://adoptium.net/
   - name: thaw
+    description: Menu bar manager
+    url: https://github.com/thaw-app/Thaw/
   - name: thunderbird
+    description: Customizable email client
+    url: https://www.thunderbird.net/en-US/
   - name: tor-browser
+    description: Web browser focusing on security
+    url: https://www.torproject.org/
   - name: tradingview
+    description: Charting and social-networking for investment traders
+    url: https://www.tradingview.com/desktop/
   - name: tunnelblick
+    description: Free and open-source OpenVPN client
+    url: https://www.tunnelblick.net/
   - name: virtualbox
+    description: Virtualiser for arm64 hardware
+    url: https://www.virtualbox.org/
   - name: visual-studio-code
+    description: Open-source code editor
+    url: https://code.visualstudio.com/
   - name: vlc
+    description: Multimedia player
+    url: https://www.videolan.org/vlc/
   - name: vscodium
+    description: Binary releases of VS Code without MS branding/telemetry/licensing
+    url: https://github.com/VSCodium/vscodium
   - name: webstorm
+    description: JavaScript IDE
+    url: https://www.jetbrains.com/webstorm/
   - name: whisky
+    description: Wine wrapper built with SwiftUI
+    url: https://getwhisky.app/
   - name: wireshark-app
+    description: Network protocol analyzer
+    url: https://www.wireshark.org/
   - name: yandex-cloud-cli
+    description: CLI for Yandex Cloud
+    url: https://cloud.yandex.com/docs/cli/
   - name: zed
+    description: Multiplayer code editor
+    url: https://zed.dev/
   - name: zenmap
+    description: Multi-platform graphical interface for official Nmap Security Scanner
+    url: https://nmap.org/zenmap/
   - name: zoom
+    description: Video communication and virtual meeting platform
+    url: https://www.zoom.us/
 
 macbook_homebrew_packages:
   - name: ansible
