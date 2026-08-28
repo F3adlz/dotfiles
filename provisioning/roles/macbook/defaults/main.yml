@@ -34,7 +34,8 @@ macbook_homebrew_casks:
   - name: cyberduck
   - name: datagrip
   - name: deepl
-  - name: docker
+  - name: discord
+  - name: docker-desktop
   - name: drawio
   - name: firefox
   - name: flameshot
@@ -47,7 +48,7 @@ macbook_homebrew_casks:
   - name: goland
   - name: google-chrome
   - name: grandperspective
-  - name: httpie
+  - name: httpie-desktop
   - name: iina
   - name: imazing
   - name: intellij-idea
@@ -73,6 +74,7 @@ macbook_homebrew_casks:
   - name: pycharm
   - name: qbittorrent
   - name: rectangle
+  - name: stablyai/orca/orca
   - name: steam
   - name: stellarium
   - name: suspicious-package
