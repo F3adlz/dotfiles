@@ -5,7 +5,6 @@
     name:
       # https://github.com/buo/homebrew-cask-upgrade
       - buo/cask-upgrade
-      - hakky54/crip
       - hashicorp/tap
       - jetpackduba/apps
       - micronaut-projects/tap

@@ -277,6 +277,7 @@ macbook_homebrew_packages:
   - name: ccusage
   - name: cdktf
   - name: convmv
+  - name: crip
   - name: ddrescue
   - name: dive
   - name: docker-compose
@@ -298,7 +299,6 @@ macbook_homebrew_packages:
   - name: gradle
   - name: gron
     url: https://github.com/tomnomnom/gron
-  - name: hakky54/crip/crip
   - name: hashicorp/tap/terraform
   - name: hashicorp/tap/vault
   - name: helm
