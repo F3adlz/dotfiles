@@ -2,16 +2,7 @@
 
 - name: Tap and trust third-party repositories
   community.general.homebrew_tap:
-    name:
-      # https://github.com/buo/homebrew-cask-upgrade
-      - buo/cask-upgrade
-      - hashicorp/tap
-      - jetpackduba/apps
-      - micronaut-projects/tap
-      - mtslzr/marmaduke-chromium
-      - raine/claude-history
-      - stablyai/orca
-      - yuccastream/tap
+    name: "{{ macbook_homebrew_taps }}"
     trust: true
 - name: Homebrew | Install packages
   community.general.homebrew:

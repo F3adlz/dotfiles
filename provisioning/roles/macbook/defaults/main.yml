@@ -11,6 +11,17 @@ macbook_macos_iterm2_jobs_to_ignore:
 
 macbook_domain_custom_dns_domains: []
 
+macbook_homebrew_taps:
+  # https://github.com/buo/homebrew-cask-upgrade
+  - buo/cask-upgrade
+  - hashicorp/tap
+  - jetpackduba/apps
+  - micronaut-projects/tap
+  - mtslzr/marmaduke-chromium
+  - raine/claude-history
+  - stablyai/orca
+  - yuccastream/tap
+
 macbook_homebrew_casks:
   - name: agentsview
     description: Browse, search and analyse your past AI coding sessions
