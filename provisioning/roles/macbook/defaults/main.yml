@@ -288,6 +288,7 @@ macbook_homebrew_packages:
   - name: crip
   - name: ddrescue
   - name: dive
+  - name: djview4
   - name: docker-compose
   - name: duf
   - name: eza
@@ -352,6 +353,7 @@ macbook_homebrew_packages:
   - name: tox
   - name: tree
   - name: trippy
+  - name: unar
   - name: uv
   - name: viddy
     description: Modern watch alternative
