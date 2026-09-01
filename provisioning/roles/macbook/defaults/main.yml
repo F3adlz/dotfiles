@@ -59,6 +59,9 @@ macbook_homebrew_casks:
   - name: chatgpt
     description: OpenAI's official ChatGPT desktop app
     url: https://chatgpt.com/
+  - name: chatgpt-classic
+    description: OpenAI's previous ChatGPT desktop app
+    url: https://chatgpt.com/
   - name: chromium
     description: Free and open-source web browser
     url: https://www.chromium.org/Home
@@ -74,9 +77,6 @@ macbook_homebrew_casks:
   - name: codex
     description: OpenAI's coding agent that runs in your terminal
     url: https://github.com/openai/codex
-  - name: codex-app
-    description: OpenAI's Codex desktop app for managing coding agents
-    url: https://openai.com/codex
   - name: commander-one
     description: Two-panel file manager
     url: https://mac.eltima.com/file-manager.html
