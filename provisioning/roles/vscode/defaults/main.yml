@@ -1,0 +1,45 @@
+---
+
+vscode_cli: code
+
+vscode_extensions:
+  - id: 42crunch.vscode-openapi
+    description: "OpenAPI creation, editing and preview, as well as static and dynamic API security testing."
+  - id: asyncapi.asyncapi-preview
+    description: "Preview AsyncAPI documents inside VSCode."
+  - id: christian-kohler.path-intellisense
+    description: "Visual Studio Code plugin that autocompletes filenames"
+  - id: darkriszty.markdown-table-prettify
+    description: "Transforms markdown tables to be more readable."
+  - id: davidanson.vscode-markdownlint
+    description: "Markdown linting and style checking for Visual Studio Code"
+  - id: docker.docker
+    description: "Edit smarter, ship faster with an enhanced Docker-development experience"
+  - id: eamodio.gitlens
+    description: "Supercharge Git within VS Code — Visualize code authorship at a glance via Git blame annotations and CodeLens"
+  - id: eriklynd.json-tools
+    description: "Tools for manipulating JSON"
+  - id: esbenp.prettier-vscode
+    description: "Code formatter using prettier"
+  - id: github.vscode-github-actions
+    description: "GitHub Actions workflows and runs for github.com hosted repositories in VS Code"
+  - id: gitlab.gitlab-workflow
+    description: "Official GitLab-maintained extension for Visual Studio Code."
+  - id: hashicorp.terraform
+    description: "Syntax highlighting and autocompletion for Terraform"
+  - id: jflbr.jwt-decoder
+    description: "A simple JWT decoder extension for VS Code"
+  - id: ms-python.python
+    description: >-
+      Python language support with extension access points for IntelliSense (Pylance),
+      Debugging (Python Debugger), linting, formatting, refactoring, unit tests, and more.
+  - id: myml.vscode-markdown-plantuml-preview
+    description: "markdown plantum preview"
+  - id: openai.chatgpt
+    description: "Codex is a coding agent that works with you everywhere you code"
+  - id: redhat.ansible
+    description: "Ansible language support"
+  - id: redhat.vscode-yaml
+    description: "YAML Language Support by Red Hat, with built-in Kubernetes syntax support"
+  - id: vscodevim.vim
+    description: "Vim emulation for Visual Studio Code"

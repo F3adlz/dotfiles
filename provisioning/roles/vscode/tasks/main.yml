@@ -1,0 +1,22 @@
+---
+
+- name: Get installed VS Code extensions
+  ansible.builtin.command:
+    argv:
+      - "{{ vscode_cli }}"
+      - --list-extensions
+  register: vscode_installed_extensions
+  changed_when: false
+  check_mode: false
+
+- name: Install missing VS Code extensions
+  ansible.builtin.command:
+    argv:
+      - "{{ vscode_cli }}"
+      - --install-extension
+      - "{{ item.id }}"
+  loop: "{{ vscode_extensions }}"
+  loop_control:
+    label: "{{ item.id }}"
+  when: item.id | lower not in (vscode_installed_extensions.stdout_lines | map('lower') | list)
+  changed_when: true
