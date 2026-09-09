@@ -248,6 +248,9 @@ macbook_homebrew_casks:
   - name: vscodium
     description: Binary releases of VS Code without MS branding/telemetry/licensing
     url: https://github.com/VSCodium/vscodium
+  - name: warp
+    description: Terminal emulator
+    url: https://www.warp.dev/
   - name: webstorm
     description: JavaScript IDE
     url: https://www.jetbrains.com/webstorm/
