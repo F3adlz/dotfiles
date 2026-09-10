@@ -19,6 +19,9 @@
       mode: 0700
 
 - link:
+    ~/iCloud:
+      path: "~/Library/Mobile Documents/com~apple~CloudDocs"
+      if: '[ "$(uname)" = Darwin ] && [ -d "$HOME/Library/Mobile Documents/com~apple~CloudDocs" ]'
     ~/.gitconfig: git/.gitconfig
     ~/.gitignore: git/.gitignore
     ~/.vimrc: dotfiles/vim/.vimrc
