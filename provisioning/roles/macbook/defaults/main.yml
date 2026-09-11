@@ -19,6 +19,7 @@ macbook_homebrew_taps:
   - micronaut-projects/tap
   - mtslzr/marmaduke-chromium
   - raine/claude-history
+  - sozercan/repo
   - stablyai/orca
   - yuccastream/tap
 
@@ -206,6 +207,9 @@ macbook_homebrew_casks:
   - name: rectangle
     description: Move and resize windows using keyboard shortcuts or snap areas
     url: https://rectangleapp.com/
+  - name: sozercan/repo/kaset
+    description: Native YouTube Music client
+    url: https://github.com/sozercan/kaset
   - name: stablyai/orca/orca
     description: IDE for orchestrating AI coding agents across terminals and worktrees
     url: https://onorca.dev/
