@@ -79,6 +79,9 @@ macbook_homebrew_casks:
   - name: codex
     description: OpenAI's coding agent that runs in your terminal
     url: https://github.com/openai/codex
+  - name: codexbar
+    description: Menu bar usage monitor for Codex and Claude
+    url: https://github.com/steipete/CodexBar
   - name: commander-one
     description: Two-panel file manager
     url: https://mac.eltima.com/file-manager.html
