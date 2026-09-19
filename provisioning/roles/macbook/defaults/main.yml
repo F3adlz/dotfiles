@@ -344,6 +344,9 @@ macbook_homebrew_packages:
   - name: ncdu
   - name: nmap
   - name: node
+  - name: ollama
+    description: Create, run, and share large language models (LLMs)
+    url: https://ollama.com/
   - name: openapi-diff
   - name: openconnect
   - name: openspec
@@ -364,6 +367,9 @@ macbook_homebrew_packages:
   - name: spectral-cli
   - name: speedtest-cli
   - name: subfinder
+  - name: summarize
+    description: Multi-modal AI tool to extract and summarize content
+    url: https://summarize.sh
   - name: telnet
   - name: testdisk
   - name: tldr
