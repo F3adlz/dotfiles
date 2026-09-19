@@ -1,0 +1,3 @@
+interface:
+  display_name: "Brew Add Package"
+  short_description: "Add Homebrew packages to Ansible and prepare a commit"
