@@ -356,6 +356,9 @@ macbook_homebrew_packages:
   - name: python@3.13
   - name: python@3.9
   - name: qrencode
+  - name: raine/claude-history/claude-history
+    description: Fuzzy-search Claude Code conversation history from the terminal
+    url: https://github.com/raine/claude-history
   - name: rg
   - name: showkey
   - name: spectral-cli
