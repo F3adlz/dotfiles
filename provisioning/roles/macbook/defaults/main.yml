@@ -16,6 +16,7 @@ macbook_homebrew_taps:
   - buo/cask-upgrade
   - hashicorp/tap
   - jetpackduba/apps
+  - jithin-sabu/tap
   - micronaut-projects/tap
   - mtslzr/marmaduke-chromium
   - raine/claude-history
@@ -159,6 +160,9 @@ macbook_homebrew_casks:
   - name: jetpackduba/apps/gitnuro
     description: FOSS multiplatform git client
     url: https://gitnuro.com
+  - name: jithin-sabu/tap/purge
+    description: Mac cleanup utility
+    url: https://github.com/jithin-sabu/purge-app
   - name: keepassxc
     description: Password manager app
     url: https://keepassxc.org/
