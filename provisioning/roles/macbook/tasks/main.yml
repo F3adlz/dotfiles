@@ -8,6 +8,10 @@
   community.general.homebrew:
     name: "{{ item.name }}"
   loop: "{{ macbook_homebrew_packages }}"
+- name: Run migrations
+  ansible.builtin.import_tasks: migrations.yml
+  tags:
+    - migrations
 - name: Install casks
   community.general.homebrew_cask:
     name: "{{ item.name }}"

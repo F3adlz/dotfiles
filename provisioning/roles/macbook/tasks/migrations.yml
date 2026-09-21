@@ -1,0 +1,15 @@
+---
+
+# Added: 2026-09-21
+# Reason: the upstream cask has a different cask name but installs the same Flameshot.app.
+# Source: https://github.com/flameshot-org/homebrew-flameshot
+# Remove after: all managed Macs use the upstream cask and migration from the
+# legacy homebrew/cask/flameshot installation is no longer supported.
+# Uninstall without zap to preserve the user's Flameshot configuration.
+- name: Migrations | Remove legacy Flameshot cask before installing upstream cask
+  community.general.homebrew_cask:
+    name: flameshot
+    state: absent
+  when: >-
+    'flameshot-org/flameshot/flameshot-org-flameshot' in
+    (macbook_homebrew_casks | map(attribute='name') | list)

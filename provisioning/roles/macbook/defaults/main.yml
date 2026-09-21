@@ -14,6 +14,7 @@ macbook_domain_custom_dns_domains: []
 macbook_homebrew_taps:
   # https://github.com/buo/homebrew-cask-upgrade
   - buo/cask-upgrade
+  - flameshot-org/flameshot
   - hashicorp/tap
   - jetpackduba/apps
   - jithin-sabu/tap
@@ -106,7 +107,7 @@ macbook_homebrew_casks:
   - name: firefox
     description: Web browser
     url: https://www.mozilla.org/firefox/
-  - name: flameshot
+  - name: flameshot-org/flameshot/flameshot-org-flameshot
     description: Screenshot software with built-in annotation tools
     url: https://flameshot.org/
   - name: font-hack
