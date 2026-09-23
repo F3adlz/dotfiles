@@ -1,0 +1,8 @@
+---
+macbook_time_machine_enabled: true
+# The configured local destination may be disconnected during provisioning.
+macbook_time_machine_destination:
+  name: TimeMachine
+  mount_point: /Volumes/TimeMachine
+macbook_time_machine_auto_backup: true
+macbook_time_machine_backup_on_battery: true

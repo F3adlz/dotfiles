@@ -1,0 +1,161 @@
+---
+- name: Time Machine | Validate exclusion lists
+  ansible.builtin.assert:
+    that:
+      - macbook_time_machine_public_excluded_paths | type_debug == 'list'
+      - macbook_time_machine_private_excluded_paths | type_debug == 'list'
+    fail_msg: >-
+      Time Machine public and private exclusions must be lists. Configure
+      public exclusions in the macbook role defaults and optional private
+      exclusions in provisioning/host_vars/{{ inventory_hostname }}/macos.local.yml.
+
+- name: Time Machine | Combine public and private exclusions
+  ansible.builtin.set_fact:
+    macbook_time_machine_excluded_paths: >-
+      {{ macbook_time_machine_public_excluded_paths +
+         macbook_time_machine_private_excluded_paths }}
+  no_log: true
+
+- name: Time Machine | Validate desired configuration
+  ansible.builtin.assert:
+    that:
+      - ansible_facts.env.HOME != '/var/root'
+      - macbook_time_machine_destination.name | length > 0
+      - macbook_time_machine_destination.mount_point is match('^/Volumes/[^/]+$')
+      - macbook_time_machine_excluded_paths | length == macbook_time_machine_excluded_paths | unique | length
+      - macbook_time_machine_excluded_paths | select('match', '^/') | list | length == macbook_time_machine_excluded_paths | length
+      - "'/' not in macbook_time_machine_excluded_paths"
+
+- name: Time Machine | Read configured destinations
+  ansible.builtin.shell: |
+    set -euo pipefail
+    xml=$(tmutil destinationinfo -X)
+    # A plist value immediately follows its key. Read Name only from local
+    # destination dictionaries in the Destinations array.
+    array_xpath='/plist/dict/key[.="Destinations"]/following-sibling::*[1][self::array]'
+    name_xpath="$array_xpath"
+    name_xpath+="/dict[key[.='Kind']/following-sibling::*[1][self::string and .='Local']]"
+    name_xpath+="/key[.='Name']/following-sibling::*[1][self::string]"
+    xq --no-pager --no-color -s -x '/plist/dict' <<< "$xml" >/dev/null
+    if xq --no-pager --no-color -s -x '/plist/dict/key[.="Destinations"]' <<< "$xml" >/dev/null; then
+      xq --no-pager --no-color -s -x "$array_xpath" <<< "$xml" >/dev/null
+    fi
+    xq --no-pager --no-color -x "$name_xpath" <<< "$xml"
+  args:
+    executable: /bin/bash
+  register: macbook_time_machine_destinations_output
+  changed_when: false
+  check_mode: false
+
+- name: Time Machine | Determine whether local destination is configured
+  ansible.builtin.set_fact:
+    macbook_time_machine_destination_present: >-
+      {{ macbook_time_machine_destination.name in macbook_time_machine_destinations_output.stdout_lines }}
+
+- name: Time Machine | Check desired destination mount point
+  ansible.builtin.stat:
+    path: "{{ macbook_time_machine_destination.mount_point }}"
+  register: macbook_time_machine_destination_mount
+  when: not macbook_time_machine_destination_present
+
+- name: Time Machine | Require the destination disk before configuring it
+  ansible.builtin.assert:
+    that:
+      - macbook_time_machine_destination_mount.stat.isdir | default(false)
+      - macbook_time_machine_destination.mount_point in (ansible_facts.mounts | map(attribute='mount') | list)
+    fail_msg: >-
+      The Time Machine destination is not configured. Mount
+      {{ macbook_time_machine_destination.mount_point }} and rerun provisioning.
+  when: not macbook_time_machine_destination_present
+
+- name: Time Machine | Add destination
+  ansible.builtin.command:
+    argv:
+      - tmutil
+      - setdestination
+      - -a
+      - "{{ macbook_time_machine_destination.mount_point }}"
+  become: true
+  changed_when: true
+  when: not macbook_time_machine_destination_present
+
+- name: Time Machine | Read automatic backup setting
+  ansible.builtin.command: defaults read /Library/Preferences/com.apple.TimeMachine AutoBackup
+  register: macbook_time_machine_auto_backup_current
+  changed_when: false
+  check_mode: false
+
+- name: Time Machine | Set automatic backup setting
+  ansible.builtin.command:
+    argv:
+      - tmutil
+      - "{{ macbook_time_machine_auto_backup | ternary('enable', 'disable') }}"
+  become: true
+  changed_when: true
+  when: >-
+    (macbook_time_machine_auto_backup_current.stdout | int | bool) !=
+    (macbook_time_machine_auto_backup | bool)
+
+- name: Time Machine | Read backup on battery setting
+  ansible.builtin.command: defaults read /Library/Preferences/com.apple.TimeMachine RequiresACPower
+  register: macbook_time_machine_requires_ac_power_current
+  changed_when: false
+  check_mode: false
+
+- name: Time Machine | Set backup on battery setting
+  community.general.osx_defaults:
+    domain: /Library/Preferences/com.apple.TimeMachine
+    key: RequiresACPower
+    type: bool
+    value: "{{ not (macbook_time_machine_backup_on_battery | bool) }}"
+  become: true
+  when: >-
+    (macbook_time_machine_requires_ac_power_current.stdout | int | bool) ==
+    (macbook_time_machine_backup_on_battery | bool)
+
+- name: Time Machine | Read fixed-path exclusions
+  ansible.builtin.shell: |
+    set -euo pipefail
+    xml=$(defaults export /Library/Preferences/com.apple.TimeMachine -)
+    # SkipPaths is an optional array immediately after its key. If present,
+    # require an array and emit each string as one excluded path.
+    array_xpath='/plist/dict/key[.="SkipPaths"]/following-sibling::*[1][self::array]'
+    xq --no-pager --no-color -s -x '/plist/dict' <<< "$xml" >/dev/null
+    if xq --no-pager --no-color -s -x '/plist/dict/key[.="SkipPaths"]' <<< "$xml" >/dev/null; then
+      xq --no-pager --no-color -s -x "$array_xpath" <<< "$xml" >/dev/null
+    fi
+    xq --no-pager --no-color -x "$array_xpath/string" <<< "$xml"
+  args:
+    executable: /bin/bash
+  register: macbook_time_machine_excluded_paths_output
+  changed_when: false
+  check_mode: false
+  no_log: true
+
+- name: Time Machine | Add fixed-path exclusions
+  ansible.builtin.command:
+    argv:
+      - tmutil
+      - addexclusion
+      - -p
+      - "{{ item }}"
+  loop: >-
+    {{ macbook_time_machine_excluded_paths |
+       difference(macbook_time_machine_excluded_paths_output.stdout_lines) }}
+  become: true
+  changed_when: true
+  no_log: true
+
+- name: Time Machine | Remove obsolete fixed-path exclusions
+  ansible.builtin.command:
+    argv:
+      - tmutil
+      - removeexclusion
+      - -p
+      - "{{ item }}"
+  loop: >-
+    {{ macbook_time_machine_excluded_paths_output.stdout_lines |
+       difference(macbook_time_machine_excluded_paths) }}
+  become: true
+  changed_when: true
+  no_log: true

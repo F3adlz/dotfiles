@@ -51,6 +51,9 @@
         state: absent
 - name: MacOS | iTerm2 | Configure profile closing confirmation
   ansible.builtin.include_tasks: iterm2_preferences.yml
+- name: MacOS | Configure Time Machine
+  ansible.builtin.include_tasks: time_machine.yml
+  when: macbook_time_machine_enabled | bool
 - name: Enable Touch ID for sudo authentication
   ansible.builtin.lineinfile:
     path: /etc/pam.d/sudo_local
