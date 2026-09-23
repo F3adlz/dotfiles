@@ -214,6 +214,9 @@ macbook_homebrew_casks:
   - name: obsidian
     description: Knowledge base that works on top of a local folder of plain text Markdown files
     url: https://obsidian.md/
+  - name: opencode-desktop
+    description: AI coding agent desktop client
+    url: https://opencode.ai/
   - name: openusage
     description: AI usage tracker for Cursor, Claude Code, Codex, Copilot and more
     url: https://www.openusage.ai/
@@ -367,6 +370,9 @@ macbook_homebrew_packages:
     url: https://ollama.com/
   - name: openapi-diff
   - name: openconnect
+  - name: opencode
+    description: AI coding agent, built for the terminal
+    url: https://opencode.ai
   - name: openspec
   - name: pipx
   - name: pnpm
