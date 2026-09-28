@@ -40,3 +40,10 @@ else
 fi
 
 export OPENSPEC_TELEMETRY=0
+
+# Never proxy loopback addresses. Python httpx (e.g. shell-gpt via LiteLLM)
+# picks up the macOS system proxy but ignores its exceptions list.
+typeset -U no_proxy_hosts
+no_proxy_hosts=(${(s:,:)${NO_PROXY:-$no_proxy}} localhost 127.0.0.1 ::1)
+export NO_PROXY="${(j:,:)no_proxy_hosts}" no_proxy="${(j:,:)no_proxy_hosts}"
+unset no_proxy_hosts
