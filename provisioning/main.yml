@@ -38,5 +38,9 @@
             name: fstrim.timer
             state: started
             enabled: true
+    - name: ShellGPT configuration
+      ansible.builtin.include_role:
+        name: shell_gpt
+      when: ansible_facts['system'] in ['Linux', 'Darwin']
 
 # vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:

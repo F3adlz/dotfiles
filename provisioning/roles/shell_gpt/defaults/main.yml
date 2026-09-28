@@ -1,0 +1,19 @@
+---
+
+# Without an explicit executable the pipx module runs `python -m pipx`
+# with Ansible's own interpreter, which does not have pipx installed.
+shell_gpt_pipx_executable: pipx
+shell_gpt_package: shell-gpt[litellm]
+shell_gpt_config_dir: "{{ ansible_facts['env']['HOME'] }}/.config/shell_gpt"
+# Keys managed in .sgptrc; sgpt writes its own defaults for the rest.
+# See: https://github.com/TheR1D/shell_gpt/wiki/Ollama
+shell_gpt_settings:
+  DEFAULT_MODEL: ollama/qwen3.8:27b-nvfp4
+  API_BASE_URL: http://localhost:11434
+  USE_LITELLM: "true"
+  # Do not let the model call tools (e.g. execute_shell_command runs commands
+  # without confirmation); enable per request with --functions.
+  OPENAI_USE_FUNCTIONS: "false"
+  OPENAI_API_KEY: "0"  # placeholder; prevents sgpt's interactive API key prompt
+
+# vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:

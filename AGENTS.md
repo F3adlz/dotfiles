@@ -78,6 +78,9 @@ ansible-playbook ~/.dotfiles/provisioning/main.yml --tags=configuration
   - Automatically removes resolver files for domains not in configuration
   - Validates that each domain has at least one nameserver
   - See: https://vninja.net/2020/02/06/macos-custom-dns-resolvers/
+- `shell_gpt`: Installs ShellGPT (`sgpt`) with pipx and configures it for local Ollama (Linux and macOS)
+  - Runs after the OS-specific roles, which install `pipx` and `ollama`
+  - Manages individual `~/.config/shell_gpt/.sgptrc` keys with `lineinfile` instead of a Dotbot symlink, because sgpt rewrites the file to add missing defaults
 
 ### Key Configuration Locations
 | Config | Source in Repo | Symlink Target |

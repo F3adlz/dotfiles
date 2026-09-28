@@ -1,0 +1,26 @@
+---
+
+- name: Install ShellGPT
+  community.general.pipx:
+    name: shell-gpt
+    source: "{{ shell_gpt_package }}"
+    state: present
+    executable: "{{ shell_gpt_pipx_executable }}"
+- name: Create ShellGPT config directory
+  ansible.builtin.file:
+    path: "{{ shell_gpt_config_dir }}"
+    state: directory
+    mode: "0700"
+# sgpt rewrites .sgptrc to add missing defaults, so manage only individual keys.
+- name: Configure ShellGPT settings
+  ansible.builtin.lineinfile:
+    path: "{{ shell_gpt_config_dir }}/.sgptrc"
+    regexp: "^{{ item.key }}="
+    line: "{{ item.key }}={{ item.value }}"
+    create: true
+    mode: "0600"
+  loop: "{{ shell_gpt_settings | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+# vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:

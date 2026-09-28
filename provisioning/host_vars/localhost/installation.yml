@@ -39,6 +39,8 @@ installation_packages:
     description: files search utility
   - name: ncdu
     description: disk usage analyzer
+  - name: ollama
+    description: run large language models locally
   - name: pacmanlogviewer
     description: GUI for pacman logs
     source: https://github.com/gcala/pacmanlogviewer
@@ -46,6 +48,8 @@ installation_packages:
     source: https://github.com/denilsonsa/prettyping
   - name: procs
     source: https://github.com/dalance/procs
+  - name: python-pipx
+    description: install and run Python applications in isolated environments
   - name: qtcreator
   - name: qbittorrent
     description: torrent client
