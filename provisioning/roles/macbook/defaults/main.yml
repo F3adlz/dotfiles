@@ -100,6 +100,9 @@ macbook_homebrew_casks:
   - name: codexbar
     description: Menu bar usage monitor for Codex and Claude
     url: https://github.com/steipete/CodexBar
+  - name: coconutbattery
+    description: Tool to show live information about the batteries in various devices
+    url: https://www.coconut-flavour.com/coconutbattery/
   - name: commander-one
     description: Two-panel file manager
     url: https://mac.eltima.com/file-manager.html
