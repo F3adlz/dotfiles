@@ -157,6 +157,9 @@ macbook_homebrew_casks:
   - name: grandperspective
     description: Graphically shows disk usage within a file system
     url: https://grandperspectiv.sourceforge.net/
+  - name: headlamp
+    description: UI for Kubernetes
+    url: https://headlamp.dev/
   - name: httpie-desktop
     description: Testing client for REST, GraphQL, and HTTP APIs
     url: https://httpie.io/product
