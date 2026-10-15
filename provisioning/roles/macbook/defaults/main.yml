@@ -408,10 +408,10 @@ macbook_homebrew_packages:
     url: https://summarize.sh
   - name: telnet
   - name: testdisk
-  - name: tldr
   - name: tig
     description: Text interface for Git repositories
     url: https://jonas.github.io/tig/
+  - name: tlrc
   - name: tox
   - name: tree
   - name: trippy
