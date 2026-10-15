@@ -421,6 +421,9 @@ macbook_homebrew_packages:
     description: Modern watch alternative
     url: https://github.com/sachaos/viddy
   - name: vpn-slice
+  - name: wget
+    description: Internet file retriever
+    url: https://www.gnu.org/software/wget/
   - name: wireshark
   - name: xq
     description: Command-line XML and HTML beautifier and content extractor
