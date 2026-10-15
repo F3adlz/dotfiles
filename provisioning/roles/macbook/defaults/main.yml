@@ -389,6 +389,12 @@ macbook_homebrew_packages:
   - name: raine/claude-history/claude-history
     description: Fuzzy-search Claude Code conversation history from the terminal
     url: https://github.com/raine/claude-history
+  - name: rclone
+    description: Rsync for cloud storage
+    url: https://rclone.org/
+  - name: rdap
+    description: Command-line client for the Registration Data Access Protocol
+    url: https://www.openrdap.org
   - name: rg
   - name: showkey
   - name: spectral-cli
@@ -400,6 +406,9 @@ macbook_homebrew_packages:
   - name: telnet
   - name: testdisk
   - name: tldr
+  - name: tig
+    description: Text interface for Git repositories
+    url: https://jonas.github.io/tig/
   - name: tox
   - name: tree
   - name: trippy
