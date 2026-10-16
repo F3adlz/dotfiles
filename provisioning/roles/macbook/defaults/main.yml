@@ -181,9 +181,6 @@ macbook_homebrew_casks:
   - name: jdk-mission-control
     description: Tools to manage, monitor, profile and troubleshoot Java applications
     url: https://jdk.java.net/jmc/9/
-  - name: jetbrains-air
-    description: Agentic development environment
-    url: https://air.dev/
   - name: jetpackduba/apps/gitnuro
     description: FOSS multiplatform git client
     url: https://gitnuro.com
