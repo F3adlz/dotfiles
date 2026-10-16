@@ -337,6 +337,9 @@ macbook_homebrew_packages:
   - name: git-delta
     description: Git diff pager with syntax highlighting
     url: https://github.com/dandavison/delta
+  - name: git-filter-repo
+    description: Quickly rewrite git repository history
+    url: https://github.com/newren/git-filter-repo
   - name: git-lfs
   - name: glab
   - name: glow
