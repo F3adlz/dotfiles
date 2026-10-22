@@ -380,6 +380,9 @@ macbook_homebrew_packages:
     description: AI coding agent, built for the terminal
     url: https://opencode.ai
   - name: openspec
+  - name: ooniprobe
+    description: Network interference detection tool
+    url: https://ooni.org/
   - name: pipx
   - name: pnpm
   - name: podman
