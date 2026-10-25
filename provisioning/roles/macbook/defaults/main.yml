@@ -34,7 +34,6 @@ macbook_homebrew_taps:
   - flameshot-org/flameshot
   - hashicorp/tap
   - jetpackduba/apps
-  - jithin-sabu/tap
   - micronaut-projects/tap
   - mtslzr/marmaduke-chromium
   - raine/claude-history
@@ -184,9 +183,6 @@ macbook_homebrew_casks:
   - name: jetpackduba/apps/gitnuro
     description: FOSS multiplatform git client
     url: https://gitnuro.com
-  - name: jithin-sabu/tap/purge
-    description: Mac cleanup utility
-    url: https://github.com/jithin-sabu/purge-app
   - name: keepassxc
     description: Password manager app
     url: https://keepassxc.org/
@@ -229,6 +225,9 @@ macbook_homebrew_casks:
   - name: podman-desktop
     description: Browse, manage, inspect containers and images
     url: https://podman-desktop.io/
+  - name: purge
+    description: Clears caches and junk files by moving them to the Trash
+    url: https://purgemac.com/
   - name: pycharm
     description: IDE for professional Python development
     url: https://www.jetbrains.com/pycharm/
@@ -298,6 +297,9 @@ macbook_homebrew_casks:
   - name: yandex-cloud-cli
     description: CLI for Yandex Cloud
     url: https://cloud.yandex.com/docs/cli/
+  - name: yuccastream/tap/tuna
+    description: Tuna - software for create HTTP/TCP/SSH tunnels to local network
+    url: https://tuna.am
   - name: zed
     description: Multiplayer code editor
     url: https://zed.dev/
@@ -329,6 +331,9 @@ macbook_homebrew_packages:
   - name: djview4
   - name: docker-compose
   - name: duf
+  - name: duti
+    description: Select default apps for documents and URL schemes on macOS
+    url: https://github.com/moretension/duti/
   - name: eza
   - name: fd
   - name: fzf
@@ -433,7 +438,6 @@ macbook_homebrew_packages:
     url: https://github.com/sibprogrammer/xq
   - name: yarn
   - name: yt-dlp
-  - name: yuccastream/tap/tuna
   - name: zellij
   - name: zoxide
   - name: zrok
