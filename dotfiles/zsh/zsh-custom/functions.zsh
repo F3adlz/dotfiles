@@ -19,3 +19,45 @@ function docker_host_ip() {
 function kesh() {
   kubectl exec -it $1 ${2:-sh}
 }
+
+if is_macos; then
+  brew-outdated() {
+    emulate -L zsh
+    setopt pipe_fail
+
+    local -a args=()
+    local arg
+
+    for arg in "$@"; do
+      case "$arg" in
+        -g|--greedy)
+          args+=(--greedy)
+          ;;
+        -h|--help)
+          print "Usage: brew-outdated [-g|--greedy]"
+          return 0
+          ;;
+        *)
+          print -u2 "Unknown argument: $arg"
+          return 2
+          ;;
+      esac
+    done
+
+    command brew outdated --json=v2 "${args[@]}" |
+      jq -r '
+        if ((.formulae | length) + (.casks | length)) == 0 then
+          "All packages are up to date"
+        else
+          (
+            ["TYPE", "PACKAGE", "INSTALLED", "AVAILABLE"],
+            (.formulae[] |
+              ["formula", .name, (.installed_versions | join(", ")), .current_version]),
+            (.casks[] |
+              ["cask", .name, (.installed_versions | join(", ")), .current_version])
+          ) | @tsv
+        end
+      ' |
+      column -t -s $'\t'
+  }
+fi
