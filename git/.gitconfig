@@ -43,6 +43,11 @@
 [pull]
     ff = only
 
+[push]
+    # Set upstream automatically when first pushing a branch.
+    # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushautoSetupRemote
+    autoSetupRemote = true
+
 [rebase]
     autosquash = true
 

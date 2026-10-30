@@ -1,8 +1,3 @@
-# Git ======================================================================
-function git_push_upstream() {
-    git push --set-upstream ${1:-origin} $(git branch --show-current)
-}
-
 # resize image
 # $1 - input file name
 # $2 - size (f.e. WxH)
