@@ -4,6 +4,15 @@
 # Reason: the tldr Homebrew formula is deprecated; replace it with tlrc.
 # Source: https://github.com/tldr-pages/tldr/issues/15937
 # Remove after: all managed Macs have transitioned from tldr to tlrc.
+- name: Migrations | Check whether deprecated tldr formula is installed
+  ansible.builtin.command: brew list --formula --versions tldr
+  changed_when: false
+  failed_when: macbook_tldr_formula_installed.rc not in [0, 1]
+  register: macbook_tldr_formula_installed
+  when: >-
+    'tlrc' in
+    (macbook_homebrew_packages | map(attribute='name') | list)
+
 - name: Migrations | Remove deprecated tldr formula
   community.general.homebrew:
     name: tldr
@@ -11,6 +20,7 @@
   when: >-
     'tlrc' in
     (macbook_homebrew_packages | map(attribute='name') | list)
+    and macbook_tldr_formula_installed.rc == 0
 
 # Added: 2026-09-21
 # Reason: the upstream cask has a different cask name but installs the same Flameshot.app.
