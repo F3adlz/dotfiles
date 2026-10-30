@@ -407,6 +407,9 @@ macbook_homebrew_packages:
     description: Command-line client for the Registration Data Access Protocol
     url: https://www.openrdap.org
   - name: rg
+  - name: rtk
+    description: CLI proxy to minimize LLM token consumption
+    url: https://www.rtk-ai.app/
   - name: showkey
   - name: spectral-cli
   - name: speedtest-cli
