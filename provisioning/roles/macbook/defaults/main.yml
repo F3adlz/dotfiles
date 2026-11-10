@@ -231,6 +231,9 @@ macbook_homebrew_casks:
   - name: pycharm
     description: IDE for professional Python development
     url: https://www.jetbrains.com/pycharm/
+  - name: raindropio
+    description: All-in-one bookmark manager
+    url: https://raindrop.io/
   - name: qbittorrent
     description: Peer to peer Bitorrent client
     url: https://www.qbittorrent.org/
